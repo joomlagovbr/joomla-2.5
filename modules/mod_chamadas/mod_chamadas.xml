@@ -29,6 +29,17 @@
 		<fields name="params">
 			<fieldset name="basic">
 				<field
+					name="variacao"
+					type="integer"
+					label="MOD_CHAMADA_FIELD_VARIACAO_LAYOUT_LABEL"
+					description="MOD_CHAMADA_FIELD_VARIACAO_LAYOUT_DESC"
+					first="1"
+					default="1"
+					last="10"
+					step="1"
+				/>
+							
+				<field
 					name="modelo"
 					type="folderlist"
 					default="article_content"
@@ -268,7 +279,22 @@
 					<option value="ASC">MOD_CHAMADA_OPTION_ASC_VALUE</option>
 				</field>
 			</fieldset>
-			<fieldset name="advanced">
+			<fieldset name="advanced">			
+				<field
+					name="header_tag"
+					type="list"
+					default="show"
+					label="HEADERTAG"
+					description="HEADERTAG"
+				>
+					<option value="h1">h1</option>
+					<option value="h2">h2</option>
+					<option value="h3">h3</option>
+					<option value="h4">h4</option>
+					<option value="h5">h5</option>
+					<option value="h6">h6</option>
+					<option value="p">p</option>
+				</field>				
 				<field name="layout" type="modulelayout"
 					label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
 
