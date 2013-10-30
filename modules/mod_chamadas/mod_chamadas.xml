@@ -44,6 +44,7 @@
 					type="folderlist"
 					default="article_content"
 					label="MOD_CHAMADA_FIELD_MODELO_LABEL"
+					description="MOD_CHAMADA_FIELD_MODELO_DESC"
 					directory="modules/mod_chamadas/modelos/"
 					filter=""
 					exclude=""
@@ -55,6 +56,7 @@
 					type="text"
 					label="MOD_CHAMADA_FIELD_TITULO_ALTERNATIVO_LABEL"
 					description="MOD_CHAMADA_FIELD_TITULO_ALTERNATIVO_DESC"
+					size="50"
 				/>
 
 				<field
@@ -62,6 +64,7 @@
 					type="text"
 					label="MOD_CHAMADA_FIELD_LINK_SAIBA_MAIS_LABEL"
 					description="MOD_CHAMADA_FIELD_LINK_SAIBA_MAIS_DESC"
+					size="50"
 				/>
 				
 				<field
@@ -69,6 +72,7 @@
 					type="text"
 					label="MOD_CHAMADA_FIELD_TEXTO_SAIBA_MAIS_LABEL"
 					description="MOD_CHAMADA_FIELD_TEXTO_SAIBA_MAIS_DESC"
+					size="50"
 				/>				
 				
 				<field
@@ -96,20 +100,31 @@
 				
 				<field
 					name="mensagem_vazia"
-					type="text"
+					type="textarea"
 					label="MOD_CHAMADA_FIELD_MENSAGEM_VAZIA_LABEL"
 					description="MOD_CHAMADA_FIELD_MENSAGEM_VAZIA_DESC"
+					cols="35"
+					rows="4"
+					filter="raw"
 				/>
 			</fieldset>
-
+			<fieldset name="item_unico" label="MOD_CHAMADA_FIELDSET_ITEM_UNICO_LABEL">
+				<field
+					name="id_item_unico"
+					type="text"
+					label="MOD_CHAMADA_FIELD_ID_ITEM_UNICO_LABEL"
+					description="MOD_CHAMADA_FIELD_ID_ITEM_UNICO_DESC"
+					filter="integer"
+				/>	
+			</fieldset>
 			<!-- Fields destaque -->
-			<fieldset name="filtro" label="MOD_CHAMADA_FIELD_DESTAQUE_PARAMETROS_LABEL">
+			<fieldset name="multiplos_itens" label="MOD_CHAMADA_FIELDSET_MULTIPLOS_ITENS_LABEL">
 				<field
 					name="url"
 					type="url"					
 					label="MOD_CHAMADA_FIELD_URL_LABEL"
 					description="MOD_CHAMADA_FIELD_URL_DESC"
-					size="10"
+					size="40"
 				/>
 
 				<field 
@@ -137,6 +152,7 @@
 					type="text"					
 					label="MOD_CHAMADA_FIELD_CHAPEU_LABEL"
 					description="MOD_CHAMADA_FIELD_CHAPEU_DESC"
+					size="30"
 				/>
 
 				<field
@@ -175,16 +191,6 @@
 					<option value="2">MOD_CHAMADA_OPTION_SOMENTE_TAG_VALUE</option>
 					<option value="3">MOD_CHAMADA_OPTION_AMBOS_VALUE</option>
 				</field>
-
-				<field
-					name="catid"
-					type="category"
-					extension="com_content"					
-					size="5"
-					label="JCATEGORY"
-					description="MOD_CHAMADA_FIELD_CATEGORY_DESC"
-				>					
-				</field>
 				
 				<field
 					name="tags"
@@ -193,6 +199,17 @@
 					description="JTAG_DESC"
 					multiple="true"
 				/>
+
+				<field
+					name="catid"
+					type="category"
+					extension="com_content"					
+					size="5"
+					label="JCATEGORY"
+					description="MOD_CHAMADA_FIELD_CATEGORY_DESC"
+					multiple="true"
+				>					
+				</field>
 
 				<field 
 					name="visualizar_filho"
