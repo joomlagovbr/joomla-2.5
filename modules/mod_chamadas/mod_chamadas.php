@@ -19,6 +19,7 @@ $lista_chamadas = $chamadas->getChamadas($params);
 
 //Carrega o layout definido como o padrão.
 if(!empty($lista_chamadas)){
+	require_once JPATH_ROOT . '/components/com_content/helpers/route.php';
 	require JModuleHelper::getLayoutPath('mod_chamadas', $params->get('layout', 'default'));
 	
 //Caso esteja habilitado exibir mensagem para a lista vazia,
