@@ -132,7 +132,7 @@ $active_item = TmplPadraoGoverno01Helper::getActiveItemid();
                             <?php endif; ?>
 
                             <?php if($active_item->home == 1): //pagina inicial ?>
-                                <jdoc:include type="modules" name="pagina-inicial" headerLevel="2" />                            
+                                <jdoc:include type="modules" name="pagina-inicial" style="container" headerLevel="2" />                            
                             <?php else:
                                 $preffix = TmplPadraoGoverno01Helper::getPagePositionPreffix($active_item);
                                 $posicao_topo = $preffix. '-topo';

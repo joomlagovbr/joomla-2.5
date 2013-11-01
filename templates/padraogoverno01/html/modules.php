@@ -52,8 +52,7 @@ function modChrome_menu_sobre($module, &$params, &$attribs)
 
 function modChrome_row01($module, &$params, &$attribs)
 {
-	$content = $module->content;
-	if(! empty($content)):
+	if(! empty($module->content) ):
 	?>
 	<div id="<?php echo $params->get('moduleclass_sfx'); ?>" class="row">
     	<h2 class="hidden"><?php echo $module->title; ?></h2>
@@ -65,9 +64,8 @@ function modChrome_row01($module, &$params, &$attribs)
 
 function modChrome_hidden_titles($module, &$params, &$attribs)
 {
-	$content = $module->content;
 	$headerLevel = isset($attribs['headerLevel']) ? (int) $attribs['headerLevel'] : 2;
-	if(! empty($content)):
+	if(! empty($module->content) ):
 	?>
 		<h<?php echo $headerLevel; ?> class="hide"><?php echo $module->title; ?></h<?php echo $headerLevel; ?>>
 		<?php echo $module->content; ?>
@@ -77,9 +75,8 @@ function modChrome_hidden_titles($module, &$params, &$attribs)
 
 function modChrome_nav_span($module, &$params, &$attribs)
 {
-	$content = $module->content;
 	$headerLevel = isset($attribs['headerLevel']) ? (int) $attribs['headerLevel'] : 2;
-	if(! empty($content)):
+	if(! empty($module->content) ):
 	?>
 	<nav class="<?php echo $params->get('moduleclass_sfx'); ?> <?php echo $params->get('class_sfx', ''); ?>">
 		<h<?php echo $headerLevel; ?> <?php if($params->get('moduleclass_sfx')=='menu-de-apoio'): ?>class="hide"<?php endif; ?>><?php echo $module->title; ?> <?php if($params->get('moduleclass_sfx')!='menu-de-apoio'): ?><i class="icon-chevron-down visible-phone visible-tablet pull-right"></i><?php endif; ?></h<?php echo $headerLevel; ?>>
@@ -91,9 +88,8 @@ function modChrome_nav_span($module, &$params, &$attribs)
 
 function modChrome_div_nav_rodape($module, &$params, &$attribs)
 {
-	$content = $module->content;
 	$headerLevel = isset($attribs['headerLevel']) ? (int) $attribs['headerLevel'] : 2;
-	if(! empty($content)):
+	if(! empty($module->content) ):
 	?>
 	
 		<div class="<?php echo $params->get('class_sfx', ''); ?>">		
@@ -106,5 +102,41 @@ function modChrome_div_nav_rodape($module, &$params, &$attribs)
 		</div>
 	
 	<?php
+	endif;	
+}
+
+function modChrome_container($module, &$params, &$attribs)
+{
+	$headerLevel = isset($attribs['headerLevel']) ? (int) $attribs['headerLevel'] : 2;
+
+	if(! empty($module->content) ):
+		if($module->module == 'mod_container')
+		{
+			echo $module->content;
+		}
+		else
+		{
+		$class = $params->get('moduleclass_sfx');
+		$container_class = '';
+		$container_class_pos = strpos($class, 'container-class-');
+		if($container_class_pos !== false)
+		{
+			$container_class = substr($class, $container_class_pos);
+			$container_class = str_replace(array('container-class-','--'), array('', ' '), $container_class);
+			$class = str_replace( 'container-class-', '', $class);
+		}
+		?>
+		<div class="row-fluid module <?php echo $params->get('moduleclass_sfx'); ?>">
+			<?php if ($module->showtitle): ?>
+				<?php if(strpos($params->get('moduleclass_sfx'), 'no-outstanding-title')===false): ?><div class="outstanding-header"><?php endif; ?>
+			 	<h<?php echo $headerLevel; ?> <?php if(strpos($params->get('moduleclass_sfx'), 'no-outstanding-title')===false): ?>class="outstanding-title"<?php endif; ?>><span><?php echo $module->title; ?></span></h<?php echo $headerLevel; ?>>
+			 	<?php if(strpos($params->get('moduleclass_sfx'), 'no-outstanding-title')===false): ?></div><?php endif; ?>
+			<?php endif; ?>
+			<?php if($container_class != ''): ?><div class="<?php echo $container_class; ?>"><?php endif; ?>
+			<?php echo $module->content; ?>	
+			<?php if($container_class != ''): ?></div><?php endif; ?>
+		</div>
+		<?php
+		}
 	endif;	
 }
