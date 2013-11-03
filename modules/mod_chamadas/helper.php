@@ -8,7 +8,8 @@
  */
 
 defined('_JEXEC') or die;
-
+jimport('cms.version');
+require_once( JPATH_SITE . '/components/com_content/helpers/route.php' );
 /**
  * Helper para mod_chamadas
  *
@@ -84,7 +85,7 @@ class ModChamadasHelper
 
 		if( $params->get($simple, '' ) != '' )
 		{
-			 $link = str_ireplace('{SITE}/', JURI::root(), $params->get($simple ) );
+			$link = str_ireplace('{SITE}/', JURI::root(), $params->get($simple ) );
 		}
 		elseif( $params->get($menu, '' ) != '' )
 		{
@@ -95,15 +96,35 @@ class ModChamadasHelper
 		}
 		elseif( $params->get($article, '' ) != ''  )
 		{
-			require_once( JPATH_SITE . '/components/com_content/helpers/route.php' );
-			$link = JRoute::_(ContentHelperRoute::getArticleRoute( $params->get($article, '')));				
+			if(ModChamadasHelper::getjVersion() > 2)
+			{
+				$link = JRoute::_(  'index.php?option=com_content&view=article&id='. $params->get($article, '') );								
+			}
+			else
+			{				
+				$link = JRoute::_(ContentHelperRoute::getArticleRoute( $params->get($article, '')));
+			}					
 		}
 		elseif($content_item)
-		{
-			require_once( JPATH_SITE . '/components/com_content/helpers/route.php' );
-			$link = JRoute::_(ContentHelperRoute::getArticleRoute( $content_item->id, $content_item->catid ));				
+		{	
+			if(ModChamadasHelper::getjVersion() > 2)
+			{
+				$link = JRoute::_(  'index.php?option=com_content&view=article&id='.$content_item->id );								
+			}
+			else
+			{
+				$link = JRoute::_(ContentHelperRoute::getArticleRoute( $content_item->id, $content_item->catid ));								
+			}				
+			
 		}
 
 		return $link;
+	}
+
+	public function getjVersion()
+	{		
+		$versao = new JVersion;		
+		$versaoint = intval($versao->RELEASE);		
+		return $versaoint;
 	}
 }
