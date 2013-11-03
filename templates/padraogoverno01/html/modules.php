@@ -110,13 +110,14 @@ function modChrome_container($module, &$params, &$attribs)
 	$headerLevel = isset($attribs['headerLevel']) ? (int) $attribs['headerLevel'] : 2;
 
 	if(! empty($module->content) ):
-		if($module->module == 'mod_container')
+		if($module->module == 'mod_container') // || ($module->module == 'mod_chamadas' && $params->get('layout')=='padraogoverno01:listagem-box01'
 		{
 			echo $module->content;
 		}
 		else
 		{
 		$class = $params->get('moduleclass_sfx');
+		
 		$container_class = '';
 		$container_class_pos = strpos($class, 'container-class-');
 		if($container_class_pos !== false)
@@ -125,11 +126,21 @@ function modChrome_container($module, &$params, &$attribs)
 			$container_class = str_replace(array('container-class-','--'), array('', ' '), $container_class);
 			$class = str_replace( 'container-class-', '', $class);
 		}
+
+		$variacao = $params->get('variacao', 0);
+		if( $variacao > 0 ){
+			if ( $variacao < 10 ) {
+				$variacao = '0'.$variacao;
+			}
+			$class = trim($class.' variacao-module-'.$variacao);
+		}
+
+		$title = ( $params->get('titulo_alternativo', '') != '' )? $params->get('titulo_alternativo') : $module->title;
 		?>
-		<div class="row-fluid module <?php echo $params->get('moduleclass_sfx'); ?>">
+		<div class="row-fluid module <?php echo $class; ?>">
 			<?php if ($module->showtitle): ?>
 				<?php if(strpos($params->get('moduleclass_sfx'), 'no-outstanding-title')===false): ?><div class="outstanding-header"><?php endif; ?>
-			 	<h<?php echo $headerLevel; ?> <?php if(strpos($params->get('moduleclass_sfx'), 'no-outstanding-title')===false): ?>class="outstanding-title"<?php endif; ?>><span><?php echo $module->title; ?></span></h<?php echo $headerLevel; ?>>
+			 	<h<?php echo $headerLevel; ?> <?php if(strpos($params->get('moduleclass_sfx'), 'no-outstanding-title')===false): ?>class="outstanding-title"<?php endif; ?>><span><?php echo $title; ?></span></h<?php echo $headerLevel; ?>>
 			 	<?php if(strpos($params->get('moduleclass_sfx'), 'no-outstanding-title')===false): ?></div><?php endif; ?>
 			<?php endif; ?>
 			<?php if($container_class != ''): ?><div class="<?php echo $container_class; ?>"><?php endif; ?>

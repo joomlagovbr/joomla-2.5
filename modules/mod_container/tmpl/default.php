@@ -32,14 +32,17 @@ echo '<'.$tag1.' '.$class.'>'."\n";
 
 			$class = @$mod_params->moduleclass_sfx;
 			$class .= ' module '.$moduleclass_sfx_level2;
+			if(@$mod_params->variacao != '')
+				$class .= ' variacao-module-'.((intval($mod_params->variacao)<10)? '0' : '').intval($mod_params->variacao);
+
 			$class = 'class="'.trim($class).'"';
 			
 			echo '<'.$tag2.' '.$class.'>'."\n";
 			?>
 			<?php //titulo do modulo 2 ?>
-			<?php if ($mod->showtitle && $counter <= 3): ?>
-				<?php if ($params->get('title_outstanding_column'.$counter, 1)): ?><div class="outstanding-header"><?php endif; ?>
-				<h<?php echo $headerLevel; ?> <?php if ($params->get('title_outstanding_column'.$counter, 1)): ?>class="outstanding-title"<?php endif; ?>><?php echo $mod->title; ?></h<?php echo $headerLevel; ?>>
+			<?php if ($mod->showtitle && $counter <= $numero_colunas): ?>
+				<?php if ($params->get('title_outstanding_column'.$counter)): ?><div class="outstanding-header"><?php else: ?><div class="header"><?php endif; ?>
+				<h<?php echo $headerLevel; ?> <?php if ($params->get('title_outstanding_column'.$counter)): ?>class="outstanding-title"<?php else: ?>class="title"<?php endif; ?>><?php echo $mod->title; ?></h<?php echo $headerLevel; ?>>
 	        	<?php if( $params->get('text_link_title_column'.$counter) != '' && $params->get('url_link_title_column'.$counter) != '' ): ?>
 	        		<a href="<?php echo $params->get('url_link_title_column'.$counter) ?>" class="outstanding-link"><span class="text"><?php echo $params->get('text_link_title_column'.$counter); ?></span>
 	                    <span class="icon-box">                                          
@@ -47,14 +50,16 @@ echo '<'.$tag1.' '.$class.'>'."\n";
 	                    </span>
 	                </a>
 	        	<?php endif; ?>				
-				<?php if ($params->get('title_outstanding_column'.$counter, 1)): ?></div><?php endif; ?>
+				</div>
 			<?php elseif($mod->showtitle): ?>
-				<h<?php echo $headerLevel; ?>><?php echo $mod->title; ?></h<?php echo $headerLevel; ?>>
+				<div class="header">
+				<h<?php echo $headerLevel; ?> class="title"><?php echo $mod->title; ?></h<?php echo $headerLevel; ?>>
+				</div>
 			<?php endif; ?>
 
 			<?php echo JModuleHelper::renderModule($mod); ?>			
 	
-			<?php if($counter<=3): ?>
+			<?php if($counter<=$numero_colunas): ?>
 				<?php if ( $params->get('footer_outstanding_column'.$counter) ): ?>
     			<div class="outstanding-footer">
 		        	<?php if( $params->get('text_link_footer_column'.$counter) != '' && $params->get('url_link_footer_column'.$counter) != '' ): ?>

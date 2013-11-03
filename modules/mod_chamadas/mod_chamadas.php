@@ -15,7 +15,8 @@ require_once __DIR__ . '/helper.php';
 $chamadas = new ModChamadasHelper;
 
 //Executa a função getChamadas
-$lista_chamadas = $chamadas->getChamadas($params);
+$lista_chamadas  = $chamadas->getChamadas($params);
+$link_saiba_mais = $chamadas->getLink($params, array('link_saiba_mais', 'link_saiba_mais_menu', 'link_saiba_mais_article'));
 
 //Carrega o layout definido como o padrão.
 if(!empty($lista_chamadas)){

@@ -37,7 +37,7 @@ class ModChamadasHelper
 				catid 		-> catid da tabela #__content
 			
 			#Campos que farão parte das chamadas do tmpl.
-				images		-> Imagem do artigo (matéria)
+				image		-> Imagem do artigo (matéria)
 				title		-> Título do artigo (matéria)
 				alias		-> Apelido que será utilizado na URL
 				titlecat	-> Título da categoria (#__categories)
@@ -52,5 +52,58 @@ class ModChamadasHelper
 		$lista = $listamodelo->getListaModelo($params);			
 
 		return $lista;
-	}	
+	}
+
+	public function getIntroLimiteCaracteres($intro, $params)
+	{
+ 		if ($params->get('limitar_caractere')): 
+				
+			$tam_texto = strlen($intro);
+
+			if($tam_texto > $params->get('limite_caractere')){
+				//Busca o total de caractere até a última palavra antes do limite.
+				$limite_palavra = strrpos(substr(strip_tags($intro), 0, $params->get('limite_caractere')), " ");
+				$intro = trim(substr(strip_tags($intro), 0, $limite_palavra)).'...';
+			}
+			
+			return $intro;
+
+		else:
+
+			return strip_tags($intro, '<b><i><strong><u><b>');
+		
+		endif; 
+	}
+
+	public function getLink($params, $fields = array('simple', 'menu', 'article'), $content_item = false )
+	{
+		$simple  = $fields[0];
+		$menu    = $fields[1];
+		$article = $fields[2];
+		$link    = '';
+
+		if( $params->get($simple, '' ) != '' )
+		{
+			 $link = str_ireplace('{SITE}/', JURI::root(), $params->get($simple ) );
+		}
+		elseif( $params->get($menu, '' ) != '' )
+		{
+			$application =& JFactory::getApplication();
+			$cms_menu = $application->getMenu();
+			$menu_item = $cms_menu->getItem( $params->get($menu) );				
+			$link = JRoute::_($menu_item->link.'&Itemid='.$menu_item->id);
+		}
+		elseif( $params->get($article, '' ) != ''  )
+		{
+			require_once( JPATH_SITE . '/components/com_content/helpers/route.php' );
+			$link = JRoute::_(ContentHelperRoute::getArticleRoute( $params->get($article, '')));				
+		}
+		elseif($content_item)
+		{
+			require_once( JPATH_SITE . '/components/com_content/helpers/route.php' );
+			$link = JRoute::_(ContentHelperRoute::getArticleRoute( $content_item->id, $content_item->catid ));				
+		}
+
+		return $link;
+	}
 }

@@ -71,6 +71,19 @@
 
 				<field type="spacer" hr="true" />
 
+
+				<field
+					name="disposicao"
+					type="list"
+					default="linhas"
+					label="Disposição"
+					description="Determinar se módulos serão carregados em linhas ou colunas.">
+					<option
+						value="colunas">COLUNAS</option>
+					<option
+						value="linhas">LINHAS</option>
+				</field>
+
 				<field
 					name="auto_divisor"
 					type="list"
@@ -206,6 +219,12 @@
 					default="900"
 					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
 					description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+				
+				<field
+					name="numero_limite_colunas"
+					type="hidden"
+					value="3"
+				/>
 			</fieldset>
 		</fields>
 	</config>

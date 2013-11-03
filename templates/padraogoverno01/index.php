@@ -131,7 +131,8 @@ $active_item = TmplPadraoGoverno01Helper::getActiveItemid();
                             </div>
                             <?php endif; ?>
 
-                            <?php if($active_item->home == 1): //pagina inicial ?>
+                            <?php if(@$active_item->home == 1): //pagina inicial ?>
+                            
                                 <jdoc:include type="modules" name="pagina-inicial" style="container" headerLevel="2" />                            
                             <?php else:
                                 $preffix = TmplPadraoGoverno01Helper::getPagePositionPreffix($active_item);
@@ -142,8 +143,8 @@ $active_item = TmplPadraoGoverno01Helper::getActiveItemid();
 
                                 <?php if($this->countModules($posicao_topo) || $this->countModules("internas-topo")): ?>
                                 <div class="row-fluid">
-                                    <jdoc:include type="modules" name="internas-topo" headerLevel="2" />  
-                                    <jdoc:include type="modules" name="<?php echo $posicao_topo ?>" headerLevel="2" />                              
+                                    <jdoc:include type="modules" name="internas-topo" headerLevel="2" style="container" />  
+                                    <jdoc:include type="modules" name="<?php echo $posicao_topo ?>" headerLevel="2" style="container" />                              
                                 </div>
                                 <?php endif; ?>
                                 
@@ -153,8 +154,8 @@ $active_item = TmplPadraoGoverno01Helper::getActiveItemid();
                                         <jdoc:include type="component" />
                                     </div>
                                     <div class="span3">
-                                        <jdoc:include type="modules" name="internas-direita" headerLevel="2" />                                     
-                                        <jdoc:include type="modules" name="<?php echo $posicao_direita ?>" headerLevel="2" />
+                                        <jdoc:include type="modules" name="internas-direita" headerLevel="2" style="container" />                                     
+                                        <jdoc:include type="modules" name="<?php echo $posicao_direita ?>" headerLevel="2" style="container" />
                                     </div>
                                 </div>
                                 <?php else: ?>
@@ -165,8 +166,8 @@ $active_item = TmplPadraoGoverno01Helper::getActiveItemid();
 
                                 <?php if($this->countModules($posicao_rodape) || $this->countModules("internas-rodape")): ?>
                                 <div class="row-fluid">                                    
-                                    <jdoc:include type="modules" name="<?php echo $posicao_rodape ?>" headerLevel="2" />
-                                    <jdoc:include type="modules" name="internas-rodape" headerLevel="2" />  
+                                    <jdoc:include type="modules" name="<?php echo $posicao_rodape ?>" headerLevel="2" style="container" />
+                                    <jdoc:include type="modules" name="internas-rodape" headerLevel="2" style="container" />  
                                 </div>
                                 <?php endif; ?>
                                

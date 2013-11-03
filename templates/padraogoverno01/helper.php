@@ -160,6 +160,10 @@ class TmplPadraoGoverno01Helper
 	function getItemidParam( $activeItemid, $param )
 	{
 		$menu   =& JSite::getMenu();
+		
+		if(!$activeItemid)
+			return '';
+		
 		$params = $menu->getParams( $activeItemid->id );
 		return $params->get( $param );
 	}
