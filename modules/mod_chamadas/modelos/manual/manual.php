@@ -15,6 +15,8 @@ class ModeloManual
 
 		for ($i=0; $i < $limite; $i++) { 
 
+			$lista[$i] = new StdClass;
+
 			//chapeu e title
 			$lista[$i]->chapeu = $params->get('chapeu_item'.($i+1), '' );
 			$lista[$i]->title = $params->get('title_item'.($i+1), '' );
