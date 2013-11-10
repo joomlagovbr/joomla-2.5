@@ -142,7 +142,7 @@ class TmplPadraoGoverno01Helper
 	{
 		if($tmpl->params->get('font_style_url', '') != 'NENHUM'):
 		?>
-		<link href='<?php echo $tmpl->params->get('font_style_url', 'http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,800,700'); ?>'  rel='stylesheet' type='text/css'>
+		<link href='<?php echo str_replace(array('{SITE}', '{LOCALFONT}'), array(substr(JURI::root(),0,-1), JURI::root().'templates/'.$tmpl->template.'/css/fontes.css'), $tmpl->params->get('font_style_url', 'http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,800,700') ); ?>'  rel='stylesheet' type='text/css'>
 		<?php
 		endif;
 	}

@@ -47,7 +47,7 @@ $active_item = TmplPadraoGoverno01Helper::getActiveItemid();
     <div class="layout">
         <header>
             <div class="container"> 
-                <div class="row-fluid">                         
+                <div class="row-fluid accessibility-language-actions-container">                         
                     <div class="span6 accessibility-container">
                         <ul id="accessibility">
                             <li>
@@ -84,7 +84,7 @@ $active_item = TmplPadraoGoverno01Helper::getActiveItemid();
                 </div>
                 <!-- fim .row-fluid -->
                 <div class="row-fluid">
-                    <div id="logo" class="span8">
+                    <div id="logo" class="span8<?php if($this->params->get('classe_nome_principal', '') != '') echo ' '.$this->params->get('classe_nome_principal'); ?>">
                         <a href="<?php echo JURI::root(); ?>" title="<?php echo $this->params->get('nome_principal', 'Nome principal'); ?>">
                             <span class="portal-title-1"><?php echo $this->params->get('denominacao', ''); ?></span>
                             <h1 class="portal-title corto"><?php echo $this->params->get('nome_principal', 'Nome principal'); ?></h1>
