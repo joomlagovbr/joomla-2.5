@@ -30,9 +30,11 @@ $active_item = TmplPadraoGoverno01Helper::getActiveItemid();
     <!--[if lt IE 10]><link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/ie.css" /><![endif]-->
     <!--[if lt IE 9]><link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/ie8.css" /><![endif]-->
     <!--[if lt IE 8]><link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/ie7.css" /><link rel="stylesheet" href="font-awesome/css/font-awesome-ie7.min.css" /><![endif]-->        
-    <?php if(TmplPadraoGoverno01Helper::jqueryBeforeHead($this)) TmplPadraoGoverno01Helper::getJqueryScripts( $this ); ?>
-    <jdoc:include type="head" />
-    <?php if(TmplPadraoGoverno01Helper::jqueryAfterHead($this)) TmplPadraoGoverno01Helper::getJqueryScripts( $this ); ?>
+    <?php if(TmplPadraoGoverno01Helper::beforeHead('local_jquery', $this)) TmplPadraoGoverno01Helper::getJqueryScripts( $this ); ?>
+    <?php if(TmplPadraoGoverno01Helper::beforeHead('local_mainscript', $this)) TmplPadraoGoverno01Helper::getTemplateMainScripts( $this ); ?>
+    <jdoc:include type="head" />    
+    <?php if(TmplPadraoGoverno01Helper::afterHead('local_jquery', $this)) TmplPadraoGoverno01Helper::getJqueryScripts( $this ); ?>
+    <?php if(TmplPadraoGoverno01Helper::afterHead('local_mainscript', $this)) TmplPadraoGoverno01Helper::getTemplateMainScripts( $this ); ?>
     <?php TmplPadraoGoverno01Helper::getFontStyle( $this ); ?>
 </head>
 <body <?php TmplPadraoGoverno01Helper::getPageClass( $active_item ); ?> >
@@ -223,10 +225,8 @@ $active_item = TmplPadraoGoverno01Helper::getActiveItemid();
     </div>
     <!-- fim div#wrapper -->    
     <!-- scripts principais do template --> 
-    <?php if(TmplPadraoGoverno01Helper::jqueryInFooter($this)) TmplPadraoGoverno01Helper::getJqueryScripts( $this ); ?>
-    <script src="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/bootstrap/js/bootstrap.min.js" type="text/javascript"></script><noscript>&nbsp;<!-- item para fins de acessibilidade --></noscript>
-    <script src="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/js/jquery.cookie.js" type="text/javascript"></script><noscript>&nbsp;<!-- item para fins de acessibilidade --></noscript>
-    <script src="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/js/template.js" type="text/javascript"></script><noscript>&nbsp;<!-- item para fins de acessibilidade --></noscript>
+    <?php if(TmplPadraoGoverno01Helper::inFooter('local_jquery', $this)) TmplPadraoGoverno01Helper::getJqueryScripts( $this ); ?>
+    <?php if(TmplPadraoGoverno01Helper::inFooter('local_mainscript', $this)) TmplPadraoGoverno01Helper::getTemplateMainScripts( $this ); ?>
     <?php if($this->countModules('barra-do-governo') && $this->params->get('anexar_js_barra2014')) TmplPadraoGoverno01Helper::getBarra2014Script( $this ); ?>
     <?php if($this->params->get('google_analytics_id', '') != ''): ?>
         <script type="text/javascript">

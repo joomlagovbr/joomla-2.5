@@ -107,25 +107,34 @@ class TmplPadraoGoverno01Helper
 		<?php
 	}
 
-	static function jqueryBeforeHead( &$tmpl )
+	static function getTemplateMainScripts( &$tmpl )
 	{
-		if ($tmpl->params->get('local_jquery', 'footer') == 'before_head') {
+		?>
+		<script src="<?php echo $tmpl->baseurl; ?>/templates/<?php echo $tmpl->template; ?>/bootstrap/js/bootstrap.min.js" type="text/javascript"></script><noscript>&nbsp;<!-- item para fins de acessibilidade --></noscript>
+	    <script src="<?php echo $tmpl->baseurl; ?>/templates/<?php echo $tmpl->template; ?>/js/jquery.cookie.js" type="text/javascript"></script><noscript>&nbsp;<!-- item para fins de acessibilidade --></noscript>
+	    <script src="<?php echo $tmpl->baseurl; ?>/templates/<?php echo $tmpl->template; ?>/js/template.js" type="text/javascript"></script><noscript>&nbsp;<!-- item para fins de acessibilidade --></noscript>
+		<?php
+	}
+
+	static function beforeHead( $param='', &$tmpl )
+	{
+		if ($tmpl->params->get( $param, 'footer') == 'before_head') {
 			return true;
 		}
 		return false;
 	}
 
-	static function jqueryAfterHead( &$tmpl )
+	static function afterHead( $param='', &$tmpl )
 	{
-		if ($tmpl->params->get('local_jquery', 'footer') == 'after_head') {
+		if ($tmpl->params->get( $param, 'footer') == 'after_head') {
 			return true;
 		}
 		return false;
 	}
 
-	static function jqueryInFooter( &$tmpl )
+	static function inFooter( $param='', &$tmpl )
 	{
-		if ($tmpl->params->get('local_jquery', 'footer') == 'footer') {
+		if ($tmpl->params->get( $param, 'footer') == 'footer') {
 			return true;
 		}
 		return false;

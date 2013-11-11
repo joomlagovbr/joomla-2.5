@@ -129,7 +129,16 @@
 					<option value="before_head">Antes do jmodule HEAD</option>
 					<option value="after_head">Depois do jmodule HEAD</option>					
 					<option value="footer">no final da página</option>					
-				</field>				
+				</field>
+				<field name="local_mainscript" type="list" default="footer"
+					label="Local dos arquivos javascript principais"
+					description="De acordo com as possíveis incompatibilidades decorrentes do local de utilização, alterar local das chamadas jquery e do local do script principal do template, onde podem constar funções de apoio do template."
+					filter="string"
+				>
+					<option value="before_head">Antes do jmodule HEAD</option>
+					<option value="after_head">Depois do jmodule HEAD</option>					
+					<option value="footer">no final da página</option>					
+				</field>
 				<field type="spacer" hr="true" />
 				<field name="anexar_js_barra2014" type="list" default="0" label="Anexar arquivo JS da barra do governo 2014" description="Anexa arquivo JS, se disponível para a versão da barra.">					
 					<option value="1">SIM</option>
