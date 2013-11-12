@@ -4447,6 +4447,7 @@ CREATE TABLE  `portal_modelo_3x`.`pmgov2013_session` (
 
 /*!40000 ALTER TABLE `pmgov2013_session` DISABLE KEYS */;
 LOCK TABLES `pmgov2013_session` WRITE;
+INSERT INTO `portal_modelo_3x`.`pmgov2013_session` VALUES  ('82ca934d1ef8138a56e0f75fc9316f4e',0,1,'1384215024','__default|a:7:{s:15:\"session.counter\";i:1;s:19:\"session.timer.start\";i:1384215019;s:18:\"session.timer.last\";i:1384215019;s:17:\"session.timer.now\";i:1384215019;s:22:\"session.client.browser\";s:120:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36\";s:8:\"registry\";O:9:\"JRegistry\":1:{s:7:\"\\0\\0\\0data\";O:8:\"stdClass\":0:{}}s:4:\"user\";O:5:\"JUser\":24:{s:9:\"\\0\\0\\0isRoot\";N;s:2:\"id\";i:0;s:4:\"name\";N;s:8:\"username\";N;s:5:\"email\";N;s:8:\"password\";N;s:14:\"password_clear\";s:0:\"\";s:5:\"block\";N;s:9:\"sendEmail\";i:0;s:12:\"registerDate\";N;s:13:\"lastvisitDate\";N;s:10:\"activation\";N;s:6:\"params\";N;s:6:\"groups\";a:1:{i:0;s:1:\"1\";}s:5:\"guest\";i:1;s:13:\"lastResetTime\";N;s:10:\"resetCount\";N;s:10:\"\\0\\0\\0_params\";O:9:\"JRegistry\":1:{s:7:\"\\0\\0\\0data\";O:8:\"stdClass\":0:{}}s:14:\"\\0\\0\\0_authGroups\";N;s:14:\"\\0\\0\\0_authLevels\";a:2:{i:0;i:1;i:1;i:1;}s:15:\"\\0\\0\\0_authActions\";N;s:12:\"\\0\\0\\0_errorMsg\";N;s:10:\"\\0\\0\\0_errors\";a:0:{}s:3:\"aid\";i:0;}}',0,'');
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `pmgov2013_session` ENABLE KEYS */;
 

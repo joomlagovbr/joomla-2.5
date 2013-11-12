@@ -205,11 +205,37 @@ class TmplPadraoGoverno01Helper
 		return $pos_preffix;
 	}
 
+	static function isOnlyModulesPage()
+	{
+		$jinput = JFactory::getApplication()->input;
+		$option = $jinput->get('option', '', 'string');
+		
+		//informar aqui componentes que desejar utilizar para páginas internas de capa, que exibirão somente modulos:
+		$onlyModules = array('com_blankcomponent','NOME_OUTRO_COMPONENTE');
+
+		if(in_array($option, $onlyModules))
+			return true;
+
+		return false;
+	}
+
 	static function hasMessage()
 	{
         if (count(JFactory::getApplication()->getMessageQueue()) > 0)
         	return true;
 
         return false;
+	}
+
+	static function debug( $preffix = '', $active_item = 0 )
+	{
+		if(JApplication::getCfg('debug')==1)
+		{
+			// var_dump($active_item);
+			echo '<strong>Debug de template</strong><br />';
+			echo '<strong>Prefixo de posicoes de modulo:</strong> '.$preffix.'<br />';
+			echo '<strong>ID Item de menu ativo:</strong> '.$active_item->id.'<br />';
+			echo '<strong>LINK Item de menu ativo:</strong> '.$active_item->link.'<br />';
+		}
 	}
 }

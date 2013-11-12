@@ -123,7 +123,7 @@ $active_item = TmplPadraoGoverno01Helper::getActiveItemid();
                         </section>                  
                     </div>
                     <!-- fim #navigation.span3 -->
-                    <div id="content" class="span9">
+                    <div id="content" class="span9<?php if( !TmplPadraoGoverno01Helper::isOnlyModulesPage() || @$active_item->home != 1 ): ?> internas<?php endif; ?>">
                         <section id="content-section">                          
                             <span class="hide">Início do conteúdo da página</span> 
                             
@@ -133,10 +133,12 @@ $active_item = TmplPadraoGoverno01Helper::getActiveItemid();
                             </div>
                             <?php endif; ?>
 
-                            <?php if(@$active_item->home == 1): //pagina inicial ?>
+                            <?php if(@$active_item->home == 1 ): //pagina inicial ?>
                             
                                 <jdoc:include type="modules" name="pagina-inicial" style="container" headerLevel="2" />                            
+                           
                             <?php else:
+                                
                                 $preffix = TmplPadraoGoverno01Helper::getPagePositionPreffix($active_item);
                                 $posicao_topo = $preffix. '-topo';
                                 $posicao_rodape = $preffix. '-rodape';
@@ -153,7 +155,12 @@ $active_item = TmplPadraoGoverno01Helper::getActiveItemid();
                                 <?php if($this->countModules($posicao_direita) || $this->countModules("internas-direita")): ?>
                                 <div class="row-fluid">
                                     <div class="span9">
-                                        <jdoc:include type="component" />
+                                        <?php if(  TmplPadraoGoverno01Helper::isOnlyModulesPage() ): ?>
+                                             <jdoc:include type="modules" name="pagina-interna-capa" style="container" headerLevel="2" />  
+                                             <jdoc:include type="modules" name="pagina-interna-capa-<?php echo $preffix ?>" style="container" headerLevel="2" />
+                                        <?php else: ?>
+                                            <jdoc:include type="component" />
+                                        <?php endif; ?>
                                     </div>
                                     <div class="span3">
                                         <jdoc:include type="modules" name="internas-direita" headerLevel="2" style="container" />                                     
@@ -162,7 +169,12 @@ $active_item = TmplPadraoGoverno01Helper::getActiveItemid();
                                 </div>
                                 <?php else: ?>
                                 <div class="row-fluid">
-                                    <jdoc:include type="component" />
+                                    <?php if(  TmplPadraoGoverno01Helper::isOnlyModulesPage() ): ?>
+                                         <jdoc:include type="modules" name="pagina-interna-capa" style="container" headerLevel="2" />  
+                                         <jdoc:include type="modules" name="pagina-interna-capa-<?php echo $preffix ?>" style="container" headerLevel="2" />
+                                    <?php else: ?>
+                                        <jdoc:include type="component" />
+                                    <?php endif; ?>
                                 </div>
                                 <?php endif; ?>
 
@@ -248,5 +260,6 @@ $active_item = TmplPadraoGoverno01Helper::getActiveItemid();
     <?php endif; ?>
     <!-- debug -->
     <jdoc:include type="modules" name="debug" />
+    <?php TmplPadraoGoverno01Helper::debug( $preffix, $active_item); ?>
 </body>
 </html>
