@@ -90,10 +90,10 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 	          		</span> 
 	          		<?php if($article->metakey != ''): ?>
 	          		<span class="keywords">
-	                      Tags:
-	                      <?php TemplateContentCategoryHelper::displayMetakeyLinks($article->metakey); ?>
-	                  </span>
-	              <?php endif; ?>
+	                	Tags:
+	                    <?php TemplateContentCategoryHelper::displayMetakeyLinks($article->metakey); ?>
+	                </span>
+	              	<?php endif; ?>
 				</div>
 				<div class="span2 tileInfo">
 					<ul>
@@ -106,7 +106,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 		
 						<li><i class="icon-fixed-width icon-calendar"></i> <?php echo JHtml::_('date', $article->publish_up, 'd/m/y'); ?></li>
 						<li><i class="icon-fixed-width icon-time"></i> <?php echo JHtml::_('date', $article->publish_up, 'H\hi'); ?></li>
-						<li><i class="icon-fixed-width"></i> Artigo</li>
+						<!-- <li><i class="icon-fixed-width"></i> Artigo</li> -->
 					</ul>							            								
 				</div>									
 			</div>

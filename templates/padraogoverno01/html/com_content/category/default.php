@@ -25,9 +25,7 @@ require __DIR__.'/_helper.php';
 	</h1>
 	<?php elseif ($this->params->get('show_category_title', 1)) : ?>
 	<h1 class="borderHeading">		
-		<?php if ($this->params->get('show_category_title')) : ?>
 		<?php echo $this->category->title; ?>
-		<?php endif; ?>
 	</h1>
 	<?php endif; ?>
 
@@ -62,7 +60,7 @@ require __DIR__.'/_helper.php';
 	<?php if ($this->params->get('show_description', 1) || $this->params->def('show_description_image', 1)) : ?>
 	<div class="subtitle">
 		<?php if ($this->params->get('show_description_image') && $this->category->getParams()->get('image')) : ?>
-			<img src="<?php echo $this->category->getParams()->get('image'); ?>" class="pull-left" />
+			<?php TemplateContentCategoryHelper::displayCategoryImage( $this->category->getParams()->get('image') ); ?>
 		<?php endif; ?>
 		<?php if ($this->params->get('show_description') && $this->category->description) : ?>
 			<?php echo JHtml::_('content.prepare', $this->category->description, '', 'com_content.category'); ?>

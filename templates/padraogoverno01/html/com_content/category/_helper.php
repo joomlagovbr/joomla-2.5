@@ -183,7 +183,7 @@ class TemplateContentCategoryHelper {
 			}
 			return '<p>'.$intro.'</p>';
 		}
-		elseif(@ !empty($article->introtext))
+		elseif(@ !empty($article->introtext) &&  @ !empty($article->fulltext))
 			return $article->introtext;
 		else
 		{
@@ -221,5 +221,67 @@ class TemplateContentCategoryHelper {
 			<?php
 			endif;
 		}
+	}
+
+	static function displayCategoryImage( $image_src )
+	{
+		if( !is_string($image_src) )
+			echo '';
+
+		$imgfloat  = 'left';
+		$title     = '';
+		$class     = '';
+		$class_box = '';
+
+		$alt = 'alt="imagem sem descrição."';
+
+		if(is_file(JPATH_SITE.DS.$image_src)):
+			list($width, $height, $type, $attr) = getimagesize( JPATH_SITE.DS.$image_src );
+		else:
+			list($width, $height, $type, $attr) = @getimagesize( $image_src );	
+		endif;
+
+		if(@isset($width) && @isset($height)):
+			if($width < 500)
+				$type = 'lightbox';
+			else
+				$type = 'direct';				
+		endif;
+
+		if(($imgfloat=='left' || $imgfloat == 'right') && $type != 'direct'):
+			$class_box = 'pull-'.$imgfloat.' light-image-'.$imgfloat;
+			if($width >= $height)
+				$class_box .= ' light-image-horz';
+			else
+				$class_box .= ' light-image-vert';
+		elseif($type=='direct'):
+			if($width >= $height)
+				$class_box = 'direct-image-horz';
+			else
+				$class_box = 'direct-image-vert';					
+		endif;
+		
+		$src   = 'src="'.htmlspecialchars( $image_src ).'"';
+
+
+		if($type=='direct'):
+			$class = 'class="img-polaroid img-fulltext-'.$imgfloat.' '.$class.'"';
+			?>
+			<div class="direct-image <?php echo $class_box ?>">
+				<div class="image-box">
+				<img <?php echo $class; ?> <?php echo $title ?> <?php echo $alt; ?> <?php echo $src; ?> />						
+				</div>
+			</div>
+			<?php
+		elseif($type=='lightbox'):
+			$class = 'class="img-rounded img-fulltext-'.$imgfloat.' '.$class.'"';
+			?>
+			<div class="lightbox-image <?php echo $class_box ?>">
+				<div class="image-box">
+					<img <?php echo $class; ?> <?php echo $title ?> <?php echo $alt; ?> <?php echo $src; ?> />
+				</div>
+			</div>
+			<?php			
+		endif;
 	}
 }
