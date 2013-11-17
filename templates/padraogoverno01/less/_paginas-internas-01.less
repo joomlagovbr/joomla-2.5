@@ -114,13 +114,15 @@ main div.rastro-navegacao {
                 &:hover { background:@cor-below-content-hover-spans; border-color: @cor-below-content-hover-spans; color: @cor-branco }
             }
         }
+        .content-links li { font-size:1.3em }
     }
     
     // caixa lateral de texto, para noticias e outras paginas de conteudo
-    blockquote.right, .lateralquote, .pullquote {
+    blockquote, .lateralquote, .pullquote {
         float: right; clear: right; border-bottom: 1px solid @cor-cinza-escuro; border-top: 4px solid @cor-preto-detalhes-conteudo; border-left:none; border-right:none;
-        border-left: none !important; color: @cor-blockquote-right; font-size: 1.4em; font-weight: bold;  letter-spacing: -0.03em !important;
+        border-left: none !important; color: @cor-blockquote-right; font-size: 1.4em; font-weight: bold !important;  letter-spacing: -0.03em !important;
         line-height: 1.25em; margin: 0 1em 0.5em 0.5em; width: 35%; padding: 1em 0 !important;
+        p, a { font-weight:bold }
     }
 
     .tile-list-1 {
@@ -157,6 +159,41 @@ main div.rastro-navegacao {
         }
     }
 
+    div.pagination {
+        p.counter { display: block; width:114px; padding-top:3px; }
+        ul, li { list-style: none !important; float:left }
+        ul { }
+        li { float:left }
+    }
+
+    div.direct-image {
+        margin:0 0 21px 0; display:table;
+        .caption-top { background:@cor-cinza-claro; padding:3px 6px; .rounded-corners(5px 5px 0 0); font-style:italic; color:@cor-cinza-escuro; font-size:0.91em }
+        .image-alt { background:@cor-cinza-claro; padding:6px; .rounded-corners(0 0 5px 5px);  }
+    }
+
+    // div.direct-image-horz {  width:740px; .caption-top, .image-alt { width:663px } }
+    // div.direct-image-vert {  width:370px; .caption-top, .image-alt { width:369px } }
+    
+    div.lightbox-image {
+        .caption-top { padding:3px 6px 3px 0; font-style:italic; font-size:0.82em }
+        .image-alt { padding:6px 6px 6px 0; font-size:0.78em; line-height:1.4em }
+    }
+    div.light-image-left { margin-right:15px }
+    div.light-image-right { margin-left:15px }
+    div.light-image-horz { width:230px }
+    div.light-image-vert { max-width:180px }
+
+    #fulltext-modal { width:770px !important;
+        .modal-body { text-align:center; max-height:500px }
+        .modal-footer { text-align:left; font-size:0.91em }
+    }
+    div.pull-none { width:100%; margin:10px 0; text-align: center }
+     #content-links-modal { width:94% !important; margin-left:-47%;
+        .modal-header { height:30px }
+        .modal-body { text-align:center; max-height:500px }              
+        .modal-footer { height:30px }
+     }
 }
 
 

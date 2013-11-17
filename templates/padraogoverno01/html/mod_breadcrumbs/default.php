@@ -53,10 +53,14 @@ defined('_JEXEC') or die;
 		}
 
 	}
-	elseif ($show_last)
+	elseif ($show_last && $key > 0)
 	{
 		// Render last item if reqd.
 		echo '<span>' . $item->name . '</span>';
+	}
+	else
+	{
+		echo '<a href="' . $item->link . '" class="pathway">' . $item->name . '</a>';
 	}
 	endforeach; ?>
 </div>

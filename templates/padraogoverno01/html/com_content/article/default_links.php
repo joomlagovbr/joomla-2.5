@@ -59,11 +59,22 @@ if ($urls && (!empty($urls->urla) || !empty($urls->urlb) || !empty($urls->urlc))
 							echo "<a href=\"" . htmlspecialchars($link) . "\" onclick=\"window.open(this.href, 'targetWindow', '".$attribs."'); return false;\">".
 								htmlspecialchars($label).'</a>';
 							break;
-						case 3:
-							// open in a modal window
-							JHtml::_('behavior.modal', 'a.modal'); ?>
-							<a class="modal" href="<?php echo htmlspecialchars($link); ?>"  rel="{handler: 'iframe', size: {x:600, y:600}}">
+						case 3: ?>
+							<a id="link-modal-<?php echo $id; ?>" href="<?php echo htmlspecialchars($link); ?>">
+								<!-- data-keyboard="true" data-toggle="modal" data-remote="true" href="<?php echo htmlspecialchars($link); ?>#content-links-modal" -->
 								<?php echo htmlspecialchars($label) . ' </a>';
+								?>
+								<script type="text/javascript">
+									jQuery(document).ready(function(){
+										jQuery("#link-modal-<?php echo $id; ?>").click(function(){
+											jQuery('#content-links-modal').modal('show');
+											jQuery('#content-links-modal .modal-header span').html( jQuery(this).html() );
+											jQuery('#content-links-modal .modal-body iframe').attr( 'src', jQuery(this).attr('href') );
+											return false;
+										});
+									});
+								</script><noscript>&nbsp;<!-- item para fins de acessibilidade --></noscript>
+								<?php
 							break;
 
 						default:
@@ -76,5 +87,19 @@ if ($urls && (!empty($urls->urla) || !empty($urls->urlb) || !empty($urls->urlc))
 				</li>
 		<?php endforeach; ?>
 	</ul>
+	<!-- modal -->
+	<div id="content-links-modal" class="modal fade hide" tabindex="-1" role="dialog" aria-labelledby="fulltext-modal" aria-hidden="true">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>	
+		<span></span>	
+		</div>
+		<div class="modal-body">
+			<iframe src="<?php echo JURI::root().'templates/padraogoverno01/html/index.html' ?>" height="500" width="100%" frameborder="0"></iframe>
+		</div>
+		<div class="modal-footer">			
+			<button class="btn pull-right" data-dismiss="modal" aria-hidden="true">fechar</button>					
+		</div>
+	</div>
+	<!-- end modal -->
 </div>
 <?php endif; ?>

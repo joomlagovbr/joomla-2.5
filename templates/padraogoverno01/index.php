@@ -260,6 +260,6 @@ $active_item = TmplPadraoGoverno01Helper::getActiveItemid();
     <?php endif; ?>
     <!-- debug -->
     <jdoc:include type="modules" name="debug" />
-    <?php TmplPadraoGoverno01Helper::debug( $preffix, $active_item); ?>
+    <?php TmplPadraoGoverno01Helper::debug( @$preffix, @$active_item); ?>
 </body>
 </html>
