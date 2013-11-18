@@ -114,6 +114,7 @@ $active_item = TmplPadraoGoverno01Helper::getActiveItemid();
             <div class="container">
                 <jdoc:include type="modules" name="topo-main" style="rowfluid_section01" headerLevel="2" />  
                 <div class="row-fluid">
+                    <?php if($this->countModules("menu-principal")): ?>
                     <div id="navigation" class="span3">
                         <a href="#" class="visible-phone visible-tablet mainmenu-toggle btn"><i class="icon-list"></i>&nbsp;Menu</a>
                         <section id="navigation-section">                           
@@ -122,8 +123,9 @@ $active_item = TmplPadraoGoverno01Helper::getActiveItemid();
                             <span class="hide">Fim do menu principal</span>
                         </section>                  
                     </div>
-                    <!-- fim #navigation.span3 -->
-                    <div id="content" class="span9<?php if( !TmplPadraoGoverno01Helper::isOnlyModulesPage() || @$active_item->home != 1 ): ?> internas<?php endif; ?>">
+                    <!-- fim #navigation.span3 --> 
+                    <?php endif; ?>                   
+                    <div id="content" class="<?php if($this->countModules("menu-principal")): ?>span9<?php else: ?>span12 full<?php endif; ?><?php if( !TmplPadraoGoverno01Helper::isOnlyModulesPage() || @$active_item->home != 1 ): ?> internas<?php endif; ?>">
                         <section id="content-section">                          
                             <span class="hide">Início do conteúdo da página</span> 
                             
