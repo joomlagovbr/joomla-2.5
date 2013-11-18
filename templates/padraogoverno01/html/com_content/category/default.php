@@ -73,13 +73,32 @@ require __DIR__.'/_helper.php';
 	</div>
 
 	<?php if (!empty($this->children[$this->category->id])&& $this->maxLevel != 0) : ?>
-	<div class="cat-children">
-		<?php if ($this->params->get('show_category_heading_title_text', 1) == 1) : ?>
-		<h3>
-			<?php echo JTEXT::_('JGLOBAL_SUBCATEGORIES'); ?>
-		</h3>
-		<?php endif; ?>
-		<?php echo $this->loadTemplate('children'); ?>
+	<div class="row-fluid container-items-more-cat-children">
+		<div class="cat-children">
+			<?php if ($this->params->get('show_category_heading_title_text', 1) == 1) : ?>
+			<h3>
+				<?php echo JTEXT::_('JGLOBAL_SUBCATEGORIES'); ?>
+			</h3>
+			<?php endif; ?>
+			<?php echo $this->loadTemplate('children'); ?>
+		</div>
 	</div>
 	<?php endif; ?>
+
+	<?php // Add pagination links ?>
+	<?php if (!empty($this->items)) : ?>
+		<?php if (($this->params->def('show_pagination', 2) == 1  || ($this->params->get('show_pagination') == 2)) && ($this->pagination->get('pages.total') > 1)) : ?>
+		<div class="pagination">
+
+			<?php if ($this->params->def('show_pagination_results', 1)) : ?>
+			 	<p class="counter pull-left">
+					<?php echo $this->pagination->getPagesCounter(); ?>
+				</p>
+			<?php endif; ?>
+			
+			<?php echo $this->pagination->getPagesLinks(); ?>
+		</div>
+		<?php endif; ?>
+	</form>
+	<?php  endif; ?>
 </div>
