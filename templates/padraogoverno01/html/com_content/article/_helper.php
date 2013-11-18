@@ -82,6 +82,8 @@ class TemplateContentArticleHelper {
 
 		$keys = explode(',', $metakey);
 		$count_keys = count($keys);
+		$lang = JFactory::getLanguage();
+
 		if(count($keys)==1)
 		{				
 			$keys =  explode(';', $metakey);
@@ -93,9 +95,11 @@ class TemplateContentArticleHelper {
 			else
 				$separator = '';
 
-			if(trim($keys[$i-1]) != ''): ?>
+			if(trim($keys[$i-1]) != ''):
+				$search_formated = urlencode(substr(trim($keys[$i-1]),0, $lang->getUpperLimitSearchWord()));
+			?>
 			<span>
-				<a href="<?php echo JRoute::_($link . urlencode(trim($keys[$i-1]))); ?>" class="link-categoria"><?php echo trim($keys[$i-1]); ?></a>
+				<a href="<?php echo JRoute::_($link . $search_formated); ?>" class="link-categoria"><?php echo trim($keys[$i-1]); ?></a>
 				<?php echo $separator; ?>
 			</span>
 			<?php
