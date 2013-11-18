@@ -197,8 +197,11 @@ class TemplateContentCategoryHelper {
 		}
 	}
 
-	static function displayMetakeyLinks( $metakey, $link = '#' )
+	static function displayMetakeyLinks( $metakey, $link = '' )
 	{
+		if(empty($link))
+			$link = 'index.php?ordering=newest&searchphrase=all&limit=20&areas[0]=contenttags&Itemid=180&option=com_search&searchword=';
+
 		$keys = explode(',', $metakey);
 		$count_keys = count($keys);
 		if(count($keys)==1)
@@ -208,14 +211,13 @@ class TemplateContentCategoryHelper {
 		}
 		for ($i=1; $i <= $count_keys; $i++) { 
 			if($i!=$count_keys)
-				$separator = ', ';
+				$separator = '<span class="separator">,</span>';
 			else
 				$separator = '';
 
-			if(trim($keys[$i-1]) != ''):
-			?>
+			if(trim($keys[$i-1]) != ''): ?>
 			<span>
-				<a href="<?php echo urlencode($link . trim($keys[$i-1])); ?>" rel="tag"><?php echo trim($keys[$i-1]); ?></a>
+				<a href="<?php echo JRoute::_($link . urlencode(trim($keys[$i-1]))); ?>" class="link-categoria"><?php echo trim($keys[$i-1]); ?></a>
 				<?php echo $separator; ?>
 			</span>
 			<?php

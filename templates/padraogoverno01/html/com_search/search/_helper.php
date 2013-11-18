@@ -44,4 +44,42 @@ class TemplateSearchHelper {
 		<?php endforeach;
 	}
 
+	static function displayMetakeyLinks( $metakey, $link = '', $searchword = '' )
+	{
+		if(empty($link))
+			$link = 'index.php?ordering=newest&searchphrase=all&limit=20&areas[0]=contenttags&Itemid=180&option=com_search&searchword=';
+
+		$keys = explode(',', $metakey);
+		$count_keys = count($keys);
+		if(count($keys)==1)
+		{				
+			$keys =  explode(';', $metakey);
+			$count_keys = count($keys);
+		}
+		for ($i=1; $i <= $count_keys; $i++) { 
+			if($i!=$count_keys)
+				$separator = '<span class="separator">,</span>';
+			else
+				$separator = '';
+
+			if(trim($keys[$i-1]) != ''): ?>
+			<span>
+				<a href="<?php echo JRoute::_($link . urlencode(trim($keys[$i-1]))); ?>" class="link-categoria">
+					<?php
+					$keys[$i-1] = str_ireplace($searchword, '<span class="highlight">'.$searchword.'</span>', $keys[$i-1]);
+					if(strpos($keys[$i-1], '<span class="highlight">')!==false)
+						$replace = true;
+					else
+						$replace = false;
+					?>
+					<?php if(strtolower($searchword) == strtolower(trim($keys[$i-1])) && $replace == false): ?><span class="highlight"><?php endif; ?>
+					<?php echo trim($keys[$i-1]); ?>
+					<?php if(strtolower($searchword) == strtolower(trim($keys[$i-1])) && $replace == false): ?></span><?php endif; ?>
+				</a>
+				<?php echo $separator; ?>
+			</span>
+			<?php
+			endif;
+		}
+	}
 }
