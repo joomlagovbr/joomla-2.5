@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="system">
+	<name>plg_system_overrides</name>
+	<author>Comunidade Joomla Calango e Grupo de Trabalho de Ministériosct</author>
+	<creationDate>Novembro 2013</creationDate>
+	<copyright>Copyright (C) 2013 Comunidade Joomla Calango e Grupo de Trabalho de Ministérios.</copyright>
+	<license>GNU General Public License version 2</license>
+	<authorEmail>joomlagovbr@gmail.com</authorEmail>
+	<authorUrl>https://github.com/joomlagovbr</authorUrl>
+	<version>2.5.0</version>
+	<description>Mais informacoes na URL do github.</description>
+	<files>
+		<filename plugin="overrides">overrides.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<config>
+	<fields name="params">
+		<fieldset label="Overrides de template" name="basic">
+			<field name="override_option_1" type="text" size="40"
+				description="nome do diretório do componente considerado para override de template. Exemplo: com_content"
+				label="Option #1"
+			/>
+			<field name="override_categories_1" type="text" size="40"
+				description="Ids das categorias separadas por vírgula."
+				label="Categories #1"
+			/>
+			<field name="override_view_1" type="text" size="40"
+				description="Informe a view relacionada."
+				label="Views #1"
+			/>
+		</fieldset>
+		<fieldset name="advanced">
+			<field name="template_padrao" type="text" size="40" default="padraogoverno01"
+				description="Informe o nome do template onde o arquivo de override será procurado."
+				label="Template padrão"
+			/>
+			<field name="new_com_media_base" type="text" size="40"
+				description="Novo caminho fisico para diretório de imagens. Deve ser utilizado combinado com o comando Alias do Apache, a fim de alterar o caminho físico da pasta images, mas manter as referências de URL já criadas."
+				label="Novo caminho para COM_MEDIA_BASE"
+			/>
+			<field type="hidden" name="number_override_options" value="8" description="Altere de acordo com o número de parâmetros de override apresentados" />
+		</fieldset>
+	</fields>
+	</config>
+</extension>

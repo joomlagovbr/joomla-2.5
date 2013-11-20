@@ -17,7 +17,7 @@ $upper_limit = $lang->getUpperLimitSearchWord();
 ?>
 
 <div class="search<?php echo $this->pageclass_sfx; ?>">
-<h1>
+<h1 class="documentFirstHeading">
 	<?php if ($this->escape($this->params->get('page_heading'))) :?>
 		<?php echo $this->escape($this->params->get('page_heading')); ?>
 	<?php else : ?>
@@ -85,12 +85,21 @@ $upper_limit = $lang->getUpperLimitSearchWord();
 				<?php TemplateSearchHelper::displaySearchOnly( $this->searchareas ); ?>				
 				</fieldset>
 			<?php endif; ?>	
-			
+
 			<br />
 			<p class="pull-right">
 				<button name="Search" onclick="this.form.submit()" class="btn"><?php echo JText::_('COM_SEARCH_SEARCH');?></button>			
 			</p>
 			
+			<?php if ($this->total > 0) : ?>
+			<fieldset class="fieldset-limitbox">
+				<legend><?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?></legend>
+				<label for="limit" class="hide">
+					<?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>
+				</label>
+				<?php echo $this->pagination->getLimitBox(); ?>			
+			</fieldset>
+			<?php endif; ?>
 
 		</div>
 	</div>
@@ -98,21 +107,17 @@ $upper_limit = $lang->getUpperLimitSearchWord();
 	<?php if ($this->total > 0) : ?>
 		<br />
 		<div class="row-fluid">
-			<div class="span9">
-				<div class="pagination row-fluid">
-					<?php echo $this->pagination->getPagesLinks(); ?>
-				</div>
+			<div class="span9">				
 				<div class="row-fluid">
-					<p class="counter">
-					<?php echo $this->pagination->getPagesCounter(); ?>
-					</p>								
+					<div class="pagination text-center">
+						<?php echo $this->pagination->getPagesLinks(); ?>
+					</div>
 				</div>
-			</div>
-			<div class="span3 form-limit">						
-				<label for="limit">
-					<?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>
-				</label>
-				<?php echo $this->pagination->getLimitBox(); ?>
+				<div class="row-fluid text-center">
+				<p class="counter">
+					<?php echo $this->pagination->getPagesCounter(); ?>
+				</p>
+				</div>			
 			</div>
 		</div>					
 	<?php endif; ?>

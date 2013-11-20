@@ -11,11 +11,6 @@ defined('_JEXEC') or die;
 
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 require __DIR__.'/_helper.php';
-// var_dump($this->category->metadata->get('author'));
-// echo "<pre>";
-// var_dump($this->category->get('path'));
-// var_dump($this->category);
-// die();
 ?>
 <div class="category-list<?php echo $this->pageclass_sfx;?>">
 
@@ -99,6 +94,8 @@ require __DIR__.'/_helper.php';
 			<?php echo $this->pagination->getPagesLinks(); ?>
 		</div>
 		<?php endif; ?>
+	<?php //mantenha a tag de fechamento de formulario abaixo: a chamada inicial encontra-se na default_articles, no caso de itens serem exibidos. ?>
 	</form>
+	<?php //fim mantenha a tag de fechamento ?>
 	<?php  endif; ?>
 </div>

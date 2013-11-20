@@ -69,6 +69,12 @@ class plgSearchContenttags extends JPlugin
 			return array();
 		}
 
+		//não realiza pesquisa, se area de busca for voltada somente para itens de conteudo
+		$input = JFactory::getApplication()->input;
+		$area_content = $input->get('areas', array(), 'array');
+		if(in_array('content', $area_content) || count($area_content)==0)
+			return array();
+
 		$wheres = array();
 		switch ($phrase) {
 			case 'exact':
