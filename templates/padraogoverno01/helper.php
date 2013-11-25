@@ -197,13 +197,18 @@ class TmplPadraoGoverno01Helper
 
 	static function getPagePositionPreffix($activeItemid)
 	{
-		$pos_preffix = TmplPadraoGoverno01Helper::getPageClass($activeItemid, true);
+		$pos_preffix = TmplPadraoGoverno01Helper::getPageClass($activeItemid, true);		
 		if(empty($pos_preffix))
 		{
 			$jinput = JFactory::getApplication()->input;
 			$option = $jinput->get('option', '', 'string');
 			$view   = $jinput->get('view', '', 'string');
 			$pos_preffix = $option . '-' . $view;
+		}
+		else
+		{
+			$pos_preffix = explode(' ',$pos_preffix);
+			$pos_preffix = $pos_preffix[0];
 		}
 		return $pos_preffix;
 	}

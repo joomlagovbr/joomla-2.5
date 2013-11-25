@@ -21,6 +21,25 @@ main div.container {
             .icon-angle-right { font-size:18px; }
         }
     }
+    //fix module-box-01 internas
+    #content.internas .module {
+        .subtitle { border:none; margin:0 0 10px 0; color: @cor-module-subtitle-padrao; padding-bottom:0 }
+    }
+    //fim fix module-box-01 internas
+    .listagem-chamadas-secundarias {
+        p.subtitle-container { margin-bottom:0; color:@cor-module-subtitle-padrao; text-transform: uppercase }        
+        .image-container { float:left; margin:0 10px 10px 0 }
+        .img-rounded { width:auto; height:auto; }
+        .content-container {
+            h3,h4,h5,h6 { font-weight:300 !important; font-size:1.1em !important; margin:0 0 5px 0 !important }
+            .description { font-weight:300 !important; font-size:1em !important; margin:0 0 12px 0 !important }            
+        }
+    }
+    .outstanding-02 {
+        .outstanding-header {
+            border-top:4px solid @cor-preto; border-bottom:1px solid @cor-cinza-escuro; background:@cor-branco;
+        }
+    }
     //variacoes de cores de modulos, mais informacoes nos arquivos principais de cores
     .variacao-module-01 {
         .outstanding-header { border-color:@cor-module-title-variacao-01; background:@cor-module-title-bkg-variacao-01; }
@@ -57,7 +76,7 @@ main div.container {
         }
         .lista { margin:0 !important;
             h2, h3, h4, h5, h6 {
-                a { color:#355075; font-size:1em;
+                a { color:@cor-module-box-01-lista-li; font-size:1em;
                     &:hover { text-decoration:underline; }
                 }
             }
@@ -118,27 +137,27 @@ main div.container {
 
      .module-box-02-videos {
         .videos-container {
-            background:#002e6e !important; display:table; .rounded-corners();
-            .video-main { padding:18px 0 18px 18px; border-right:1px dotted #2b5494;
-                h3 { font-size:1.1em !important; font-weight:600; color:#cde1fc; line-height:1.3em;
-                    a { color:#cde1fc !important; }
+            background:@cor-module-box-02-videos-bkg !important; display:table; .rounded-corners();
+            .video-main { padding:18px 0 18px 18px; border-right:1px dotted @cor-module-box-02-videos-border;
+                h3 { font-size:1.1em !important; font-weight:600; color:@cor-module-box-02-videos-link; line-height:1.3em;
+                    a { color:@cor-module-box-02-videos-link !important; }
                 }
-                .description { font-weight:300 !important; color:#cde1fc !important; margin-bottom:0 !important }
+                .description { font-weight:300 !important; color:@cor-module-box-02-videos-link !important; margin-bottom:0 !important }
             }
             .video-list { margin-left:0 !important }
-            .video-item { padding:18px 0 12px 18px; border-bottom:1px dotted #2b5494;
+            .video-item { padding:18px 0 12px 18px; border-bottom:1px dotted @cor-module-box-02-videos-border;
                 &:last-child { border-bottom:none; padding-bottom:0 }
                 .link-video-item {                     
                      img { width:80px !important; height:60px; float:left; margin:0 8px 5px 0 }
                 }
-                h3 { font-size:0.85em !important; color:#cde1fc; font-weight:300 !important; line-height:1.4em !important; margin:0 !important;
-                     a { color:#cde1fc !important; }
+                h3 { font-size:0.85em !important; color:@cor-module-box-02-videos-link; font-weight:300 !important; line-height:1.4em !important; margin:0 !important;
+                     a { color:@cor-module-box-02-videos-link !important; }
                 }
             }
-            .outstanding-footer { background:#00255a; border-top:1px dotted #2b5494; padding-top:14px; padding-bottom:14px; .rounded-corners(0 0 5px 5px);
-                .outstanding-link { color:#cde1fc;
-                    .icon-box { background:#cde1fc !important;
-                        .icon-light{ color:#00255a !important; }
+            .outstanding-footer { background:@cor-module-box-02-videos-bkg2; border-top:1px dotted @cor-module-box-02-videos-border; padding-top:14px; padding-bottom:14px; .rounded-corners(0 0 5px 5px);
+                .outstanding-link { color:@cor-module-box-02-videos-link;
+                    .icon-box { background:@cor-module-box-02-videos-link !important;
+                        .icon-light{ color:@cor-module-box-02-videos-bkg2 !important; }
                     }
                 }
             }
