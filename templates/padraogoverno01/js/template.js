@@ -147,15 +147,42 @@ function browser_adjusts() {
 //ajustes de tamanho dos itens para .module-box-01
 function module_box_adjust( val ) {
 	jQuery('.module-box-01 .lista li').each(function(key){
-		if(val == null) {
-			if(key==0) max_height = 0;
-			if(key==0) size = jQuery(this).size();
-			padding_vertical = 8;
-			if(jQuery(this).height() > max_height) max_height = jQuery(this).height() + padding_vertical;
-			if(key+1 == size) jQuery('.module-box-01 .lista li').height( max_height );			
+		limit = 3 * parseInt(jQuery('.module-box-01 .lista li').size()/3);
+
+		if((key+1)%3==0 && (key+1)<=limit)
+		{
+			elm1 = jQuery('.module-box-01 .lista li').eq(key-2);
+			elm2 = jQuery('.module-box-01 .lista li').eq(key-1);
+			elm3 = jQuery('.module-box-01 .lista li').eq(key);
+			// alert(elm3.text());
+			padding_vertical = 2;
+			height = elm1.height();
+			if(elm2.height() > height)
+				height = elm2.height();
+			if(elm3.height() > height)
+				height = elm3.height();
+			
+			elm1.height(height+padding_vertical);
+			elm2.height(height+padding_vertical);
+			elm3.height(height+padding_vertical);
 		}
-		else
-			jQuery('.module-box-01 .lista li').height( val );
+		else if((key+1)>limit)
+		{
+			if(jQuery('.module-box-01 .lista li').size()-limit==2)
+			{
+				elm1 = jQuery('.module-box-01 .lista li').eq(key);
+				elm2 = jQuery('.module-box-01 .lista li').eq(key+1);
+				padding_vertical = 2;
+				height = elm1.height();
+				if(elm2.height() > height)
+					height = elm2.height();
+				elm1.height(height+padding_vertical);
+				elm2.height(height+padding_vertical);
+				return false;
+			}
+			else
+				return false;
+		}
 	});
 }
 //fim ajustes de tamanho dos itens para .module-box-01
@@ -215,3 +242,28 @@ function playAudio(element, urls, formats, basePath)
 	}
 }
 //fim funcao de controle de player de audio
+//funcao para controle de itens de videos, do listagem-box02-videos
+function setModuleBox02clicks()
+{
+	jQuery('.module-box-02-videos .video-list .link-video-item').click(function(){
+		title = jQuery(this).parent().children('h3').text();		
+		description = jQuery(this).parent().children('.info-description').text();
+		link = jQuery(this).parent().children('.info-link').text();		
+		container = jQuery(this).parent().parent().parent();
+		container.children('.video-main').children('h3').children('.title').text( title );
+		container.children('.video-main').children('.description').text( description );
+		container.children('.video-main').children('.player-container').children('iframe').attr( 'src', link );
+		return false;
+	});
+	jQuery('.module-box-02-videos .video-list .link-video-item-title').click(function(){
+		title = jQuery(this).parent().parent().children('h3').text();		
+		description = jQuery(this).parent().parent().children('.info-description').text();
+		link = jQuery(this).parent().parent().children('.info-link').text();		
+		container = jQuery(this).parent().parent().parent().parent();
+		container.children('.video-main').children('h3').children('.title').text( title );
+		container.children('.video-main').children('.description').text( description );
+		container.children('.video-main').children('.player-container').children('iframe').attr( 'src', link );
+		return false;
+	});
+}
+//fim funcao para controle de itens de videos, do listagem-box02-videos

@@ -94,7 +94,7 @@ JHtml::_('behavior.tooltip');
 			     <?php endforeach;?>
 				<dt></dt>
 				<div class="offset4">
-				<button class="button validate btn btn-primary" type="submit"><?php echo JText::_('COM_CONTACT_CONTACT_SEND'); ?></button>
+				<button class="button btn btn-primary" type="submit"><?php echo JText::_('COM_CONTACT_CONTACT_SEND'); ?></button>
 					
 				</div>
 					<input type="hidden" name="option" value="com_contact" />

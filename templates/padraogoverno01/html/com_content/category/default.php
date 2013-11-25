@@ -28,7 +28,9 @@ require __DIR__.'/_helper.php';
 		<div class="content-header-options-1 row-fluid">
 			<div class="documentByLine">
 				<?php if( $this->params->get('list_show_author') ): ?>
-				<span class="documentAuthor">por <strong><?php echo TemplateContentCategoryHelper::getAuthor( $this->category ); ?></strong></span>
+				<span class="documentAuthor">
+					<?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', '<strong>'.TemplateContentCategoryHelper::getAuthor( $this->category ).'</strong>'); ?>
+				</span>
 				<?php endif; ?>
 				<?php if( $this->params->get('list_show_date') && $this->params->get('list_show_author')): ?>
 				<span class="separator">|</span>

@@ -129,7 +129,7 @@ main div.rastro-navegacao {
                     p { margin:0 !important; line-height: 1.5em; }
                 }
             }
-            .tileImage {
+            .tileImage, .link-video-item img {
                 .rounded-corners(5px); float:left; margin: 3px 6px 6px 0;
             }
             .tileInfo {
@@ -175,6 +175,13 @@ main div.rastro-navegacao {
             .result-tags {
                 span.highlight { background:@cor-cinza-claro; font-weight:600 }
             }
+        }
+    }
+
+    .tile-collection {
+        .tileItem {
+            h1,h2,h3,h4,h5,h6 { font-size:1.1em; margin:9px 0 4px 0 }
+            a { &:hover { text-decoration: underline } }
         }
     }
     
@@ -223,4 +230,8 @@ main div.rastro-navegacao {
         .modal-body { text-align:center; max-height:500px }              
         .modal-footer { height:30px }
      }
+
+    #system-message-container {
+        margin-bottom:35px;
+    }
 }

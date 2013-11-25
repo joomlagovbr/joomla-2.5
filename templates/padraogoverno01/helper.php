@@ -177,12 +177,15 @@ class TmplPadraoGoverno01Helper
 		return $params->get( $param );
 	}
 
-	static function getPageClass( $activeItemid, $only_class = false )
+	static function getPageClass( $activeItemid, $only_class = false, $pageclass = false )
 	{
 		$class = TmplPadraoGoverno01Helper::getItemidParam($activeItemid, 'pageclass_sfx');
 
 		if($only_class)
 			return $class;
+
+		if(!empty($class) && $pageclass)
+			$class = 'pagina-'.$class;
 
 		if(! empty($class))
 			$class = 'class="'.$class.'"';
@@ -217,6 +220,41 @@ class TmplPadraoGoverno01Helper
 			return true;
 
 		return false;
+	}
+
+	static function loadModuleByPosition($position = NULL, $attribs = array(), $modules = NULL) //TmplPadraoGoverno01Helper::loadModuleByPosition('')
+	{
+		if(is_null($modules))
+			$modules = JModuleHelper::getModules( $position );
+		else if(is_null($position))
+			return;
+
+		foreach ($modules as $k => $mod):
+			if(count($attribs) > 0)
+			{
+				//correcoes utilizadas para menu de redes sociais, no rodape, por exemplo
+				if(@$attribs['replaceHTMLentities']=='1')
+				{
+					$mod = JModuleHelper::renderModule($mod, $attribs);
+					$mod = str_replace(array('&lt;', '&gt;','<i', 'i>'), array('<','>', '<span', 'span>'), $mod);
+					echo $mod;
+				}
+				else
+					echo JModuleHelper::renderModule($mod, $attribs);							
+			}
+			else
+				echo JModuleHelper::renderModule($mod);
+
+		endforeach;
+	}
+
+	static function getModules($position = NULL)
+	{
+		if(is_null($position))
+			return array();
+
+		$modules = JModuleHelper::getModules( $position );
+		return $modules;
 	}
 
 	static function hasMessage()

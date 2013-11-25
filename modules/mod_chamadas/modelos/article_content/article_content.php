@@ -20,7 +20,7 @@ class ModeloArticle_content
 		//Consulta
 		$query	= $db->getQuery(true);
 		$query->clear();
-		$query->select('cont.id, cont.catid, cont.alias');
+		$query->select('cont.id, cont.catid, cont.alias, cont.created AS created_date, cont.modified AS modify_date, cont.publish_up AS publish_date');
 		$query->from('#__content cont');
 		$query->from('#__categories cat');
 
