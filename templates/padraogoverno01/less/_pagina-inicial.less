@@ -3,10 +3,10 @@ main div.container {
         h1 { font-size:2.5em; line-height:1.2em; margin:0 0 10px 0; letter-spacing:-0.05em; font-weight:600;
             a { color:@cor-preto; }
         }
-        .outstanding-header { border-top:4px solid @cor-module-title-padrao; background:@cor-module-title-bkg-padrao; height:57px; margin:0 0 22px 0; position:relative;
+        .outstanding-header { border-top:4px solid @cor-module-title-padrao; background:@cor-module-title-bkg-padrao; min-height:53px; margin:0 0 22px 0; padding-bottom:4px; position:relative;
             a.outstanding-link { position:absolute; right:3px; bottom:8px; }
         }
-        .outstanding-title { line-height:1em; margin:11px 8px 14px 8px; font-size:1.45em; font-weight:400; color: @cor-module-title-padrao;  }
+        .outstanding-title { line-height:1em; margin:11px 8px 10px 8px; font-size:1.45em; font-weight:400; color: @cor-module-title-padrao;  }
         .subtitle { text-transform:uppercase; font-weight:400; color: @cor-module-subtitle-padrao; font-size:0.9em; line-height:1em; margin:0 0 10px 0 }
         p { font-size:0.9em; line-height:1.35em }
         h2, h3 { font-size:1.1em; line-height:1em; margin-bottom:5px; font-family:@font-family; font-weight:400;
@@ -23,7 +23,10 @@ main div.container {
     }
     //fix module-box-01 internas
     #content.internas .module {
-        .subtitle { border:none; margin:0 0 10px 0; color: @cor-module-subtitle-padrao; padding-bottom:0 }
+        .outstanding-title { font-size:1.45em; font-weight:400; margin:11px 8px 10px 8px }
+        .subtitle { border:none; margin:0 0 5px 0 !important; color: @cor-module-subtitle-padrao; padding-bottom:0; font-size:0.8em !important }
+        h2, h3 { font-size: 1.1em; margin-top:0; }
+        .description { font-weight:300; color:@cor-preto }
     }
     //fim fix module-box-01 internas
     .listagem-chamadas-secundarias {
@@ -44,7 +47,7 @@ main div.container {
     .variacao-module-01 {
         .outstanding-header { border-color:@cor-module-title-variacao-01; background:@cor-module-title-bkg-variacao-01; }
         .outstanding-title { color: @cor-module-title-variacao-01;  }
-        .subtitle { color: @cor-module-subtitle-variacao-01; }
+        .subtitle, .subtitle-container { color: @cor-module-subtitle-variacao-01 !important; }
         .outstanding-footer { border-color:@cor-module-title-variacao-01; background:@cor-module-title-bkg-variacao-01; }
         a.outstanding-link {
             .icon-box { .linear-gradient( @cor-module-title-variacao-01, lighten(@cor-module-title-variacao-01, 10%), darken(@cor-module-title-variacao-01, 10%) ) !important; }            
@@ -53,7 +56,7 @@ main div.container {
     .variacao-module-02 {
         .outstanding-header { border-color:@cor-module-title-variacao-02; background:@cor-module-title-bkg-variacao-02; }
         .outstanding-title { color: @cor-module-title-variacao-02;  }
-        .subtitle { color: @cor-module-subtitle-variacao-02; }
+        .subtitle, .subtitle-container { color: @cor-module-subtitle-variacao-02 !important; }
         .outstanding-footer { border-color:@cor-module-title-variacao-02; background:@cor-module-title-bkg-variacao-02; }
         a.outstanding-link {
             .icon-box { .linear-gradient( @cor-module-title-variacao-02, lighten(@cor-module-title-variacao-02, 10%), darken(@cor-module-title-variacao-02, 10%) ) !important; }            
@@ -62,14 +65,23 @@ main div.container {
     .variacao-module-03 {
         .outstanding-header { border-color:@cor-module-title-variacao-03; background:@cor-module-title-bkg-variacao-03; }
         .outstanding-title { color: @cor-module-title-variacao-03;  }
-        .subtitle { color: @cor-module-subtitle-variacao-03; }
+        .subtitle, .subtitle-container { color: @cor-module-subtitle-variacao-03 !important; }
         .outstanding-footer { border-color:@cor-module-title-variacao-03; background:@cor-module-title-bkg-variacao-03; }
         a.outstanding-link {
             .icon-box { .linear-gradient( @cor-module-title-variacao-03, lighten(@cor-module-title-variacao-03, 10%), darken(@cor-module-title-variacao-03, 10%) ) !important; }            
         }
     }
+    .variacao-module-04 {
+        .outstanding-header { border-color:@cor-module-title-variacao-04; background:@cor-module-title-bkg-variacao-04; }
+        .outstanding-title { color: @cor-module-title-variacao-04;  }
+        .subtitle, .subtitle-container { color: @cor-module-subtitle-variacao-04 !important; }
+        .outstanding-footer { border-color:@cor-module-title-variacao-04; background:@cor-module-title-bkg-variacao-04; }
+        a.outstanding-link {
+            .icon-box { .linear-gradient( @cor-module-title-variacao-04, lighten(@cor-module-title-variacao-04, 10%), darken(@cor-module-title-variacao-04, 10%) ) !important; }            
+        }
+    }
     .module-box-01 {
-        @border-color:darken(@cor-cinza-medio, 15%);
+        @border-color:darken(@cor-cinza-medio, 10%);
         padding-bottom:0; background:@cor-cinza-claro; border:1px solid @border-color; .rounded-corners(8px); margin-bottom:20px !important;
         .header { border-bottom:1px solid @border-color; padding:10px 12px 2px 12px;
             h2, h3, h4, h4, h6 { text-transform:uppercase; font-family: @font-family-semibold; }
@@ -90,23 +102,39 @@ main div.container {
             .carousel { margin-bottom:0 }
             .carousel-control { border:none; line-height:1em; font-size:35px; }
             .item img { width: 100%; height: auto; }
-            .galleria-info { padding:10px }
+            .galleria-info { padding:10px 10px 3px 10px }
             h3, h4, h5, h6 {
                 a { color:@cor-module-outstanding-link-padrao; font-size:0.85em; font-weight:700 }
             }
             .galleria-info-description { display:block; margin-bottom:5px; font-size:0.85em }
             .rights { display:block; margin-bottom:5px; font-size:0.85em; font-style:italic }
+            .galeria-thumbs {
+                background:lighten(@cor-cinza-claro, 25%); padding:10px 1px 1px 10px; border:1px solid @border-color; margin:0 8px 5px 5px; overflow: hidden;
+                ul { margin:0 }
+                .galeria-image {
+                    border:none; margin:0; line-height:auto; padding:0; background: @cor-preto; margin:0 4px 9px 0; display:block; float:left;
+                    a img { width:54px; height:40px; border:1px solid @cor-preto; .opacity(60) }                    
+                }
+                .active a img { .opacity(100); }
+            }
         }
         
      }
      //fix module-box-01 internas
      #content.internas .module-box-01 {
+        .header { 
+            h2, h3, h4, h4, h6 { margin-bottom: 3px; font-weight:400 }
+        }
         .gallery-pane {
              h3, h4, h5, h6 {
                 font-size:1.2em !important; margin:0 0 3px 0;
              }
              .galleria-info-description {
                 .description { font-weight:300; color:@cor-preto; margin:0 }
+             }
+             .galeria-thumbs {
+                ul { margin:-3px 0 4px 0 }
+                ul, ul li { list-style: none !important }
              }
         }
      }

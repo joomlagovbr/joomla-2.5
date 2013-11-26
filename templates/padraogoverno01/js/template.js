@@ -70,8 +70,9 @@ function init() {
 	//ajustes conforme navegador
 	browser_adjusts();
 	
-	//inicializacao de carrossel, pagina inicial
+	//inicializacao de carrossel
 	jQuery('.gallery-pane .carousel').carousel();
+	carousel_addons();
 
 	//resize para responsividade
 	resize();
@@ -267,3 +268,34 @@ function setModuleBox02clicks()
 	});
 }
 //fim funcao para controle de itens de videos, do listagem-box02-videos
+//funcao addons de carrossel
+function carousel_addons()
+{	
+	index = jQuery('.gallery-pane .carousel-inner .active').index();
+	jQuery('.galeria-thumbs .galeria-image').eq( index ).addClass('active');
+	jQuery('.galeria-thumbs .galeria-image').children('a').hover(function(){
+		jQuery(this).children('img').fadeTo('slow', 1);		
+	},function(){
+		if(!jQuery(this).parent().hasClass('active'))
+			jQuery(this).children('img').fadeTo('fast', 0.6);	
+	});
+	jQuery('.galeria-thumbs .galeria-image a').click(function(){		
+		jQuery('.galeria-thumbs .active img').fadeTo('fast', 0.6);
+		jQuery('.galeria-thumbs .active').removeClass('active');
+		jQuery(this).parent().addClass('active');
+		index = jQuery('.galeria-thumbs li.active').index();
+		jQuery(this).parents('.gallery-pane').children('.carousel').carousel( index );
+		return false;
+	});
+	jQuery('.gallery-pane .carousel').bind('slid', function(){
+		index = jQuery('.gallery-pane .carousel-inner .active').index();		
+		if(jQuery('.galeria-thumbs .galeria-image').eq( index ).hasClass('active'))
+			return true;
+		jQuery('.galeria-thumbs .active img').fadeTo('fast', 0.6);
+		jQuery('.galeria-thumbs .active').removeClass('active');
+		jQuery('.galeria-thumbs .galeria-image').eq( index ).addClass('active');
+		jQuery('.galeria-thumbs .active img').fadeTo('fast', 1);
+	});
+	jQuery('.galeria-thumbs').slideDown('slow');
+}
+//fim funcao addons de carrossel

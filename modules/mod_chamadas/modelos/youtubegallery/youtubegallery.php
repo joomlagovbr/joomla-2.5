@@ -179,7 +179,7 @@ class ModeloYoutubegallery
 			$fields[] = 'url_simple_item'.($i+1);
 			$fields[] = 'url_menu_item'.($i+1);
 			$fields[] = 'url_article_item'.($i+1);
-			$lista[$i]->link = ModChamadasHelper::getLink($params, $fields, $lista[$i]);
+			$lista[$i]->link = ModChamadasHelper::getLink($params, $fields, $lista[$i], false);
 
 		}
 

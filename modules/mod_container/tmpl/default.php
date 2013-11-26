@@ -41,6 +41,10 @@ echo '<'.$tag1.' '.$class.'>'."\n";
 			?>
 			<?php //titulo do modulo 2 ?>
 			<?php if ($mod->showtitle && $counter <= $numero_colunas): ?>
+				<?php 
+				if(@!empty($mod_params->titulo_alternativo))
+					$mod->title = $mod_params->titulo_alternativo;
+				?>
 				<?php if ($params->get('title_outstanding_column'.$counter)): ?><div class="outstanding-header"><?php else: ?><div class="header"><?php endif; ?>
 				<h<?php echo $headerLevel; ?> <?php if ($params->get('title_outstanding_column'.$counter)): ?>class="outstanding-title"<?php else: ?>class="title"<?php endif; ?>><?php echo $mod->title; ?></h<?php echo $headerLevel; ?>>
 	        	<?php if( $params->get('text_link_title_column'.$counter) != '' && $params->get('url_link_title_column'.$counter) != '' ): ?>
@@ -57,7 +61,7 @@ echo '<'.$tag1.' '.$class.'>'."\n";
 				</div>
 			<?php endif; ?>
 
-			<?php echo JModuleHelper::renderModule($mod); ?>			
+			<?php echo JModuleHelper::renderModule($mod, (array)$mod_params); ?>			
 	
 			<?php if($counter<=$numero_colunas): ?>
 				<?php if ( $params->get('footer_outstanding_column'.$counter) ): ?>

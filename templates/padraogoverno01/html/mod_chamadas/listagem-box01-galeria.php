@@ -36,6 +36,16 @@ if (empty($link_saiba_mais) && count($params->get('catid'))==1 && $params->get('
 		<!-- separador para fins de acessibilidade <--><span class="hide">&nbsp;</span></--><!-- fim separador para fins de acessibilidade -->
 		<a data-slide="next" href="#gallery-carousel-<?php echo $module->id ?>" class="right carousel-control"><i class="icon-angle-right"></i><span class="hide">Mover foto esquerda</span></a>
 	</div>
+	<div class="galeria-thumbs hide">
+		<ul>
+			<?php reset($lista_chamadas); ?>
+			<?php foreach ($lista_chamadas as $k => $lista): ?>
+			<li class="galeria-image">
+				<a href="#0<?php echo $k ?>"><img src="<?php echo $lista->image_url; ?>" alt="Img navegação."></a>
+			</li>
+			<?php endforeach; ?>			
+		</ul>
+	</div>
 </div>
 <?php if (! empty($link_saiba_mais) ): ?>
 	<div class="footer">
