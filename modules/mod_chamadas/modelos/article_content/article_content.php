@@ -145,9 +145,16 @@ class ModeloArticle_content
 		for ($i=0; $i < $lista_counter; $i++) { 
 
 			//chapeu e title
-			$lista[$i]->chapeu = ($params->get('chapeu_item'.($i+1), '') != '')? $params->get('chapeu_item'.($i+1) ) : @$lista[$i]->chapeu;
-			$lista[$i]->title = ($params->get('title_item'.($i+1), '') != '')? $params->get('title_item'.($i+1) ) : $lista[$i]->title;
+			if($params->get('chapeu') && $params->get('chapeu') != '0'  && $params->get('chapeu') != 'nenhum')			
+				$lista[$i]->chapeu = ($params->get('chapeu_item'.($i+1), '') != '')? $params->get('chapeu_item'.($i+1) ) : @$lista[$i]->chapeu;
+			else
+				$lista[$i]->chapeu = NULL;
 
+			if($params->get('exibir_title'))
+				$lista[$i]->title = ($params->get('title_item'.($i+1), '') != '')? $params->get('title_item'.($i+1) ) : $lista[$i]->title;
+			else
+				$lista[$i]->title = NULL;
+			
 			// DESCRICAO DO ARTIGO
 			if($params->get('desc_item'.($i+1), '') != ''){
 				$lista[$i]->introtext = $params->get('desc_item'.($i+1));								

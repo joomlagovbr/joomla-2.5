@@ -388,7 +388,17 @@
 		           	label="MOD_CHAMADA_FIELD_MANUAL_ORDERING01_LABEL"		           
 		           	description="MOD_CHAMADA_FIELD_MANUAL_ORDERING01_DESC"
 		        />
-		
+
+				<field
+					name="variacao_item1"
+					type="integer"
+					label="MOD_CHAMADA_FIELD_VARIACAO_LAYOUT01_LABEL"
+					description="MOD_CHAMADA_FIELD_VARIACAO_LAYOUT_DESC"
+					first="0"
+					default="0"
+					last="10"
+					step="1"
+				/>		
 			</fieldset>
 			<fieldset name="configuracoes_manuais_item2" label="MOD_CHAMADA_FIELDSET_CONF_MANUAIS_ITEM02_LABEL" addfieldpath="/modules/mod_chamadas/fields/">
 				<field
@@ -484,7 +494,17 @@
 					step="1"
 		           	label="MOD_CHAMADA_FIELD_MANUAL_ORDERING02_LABEL"		           
 		           	description="MOD_CHAMADA_FIELD_MANUAL_ORDERING02_DESC"
-		        />			
+		        />
+				<field
+					name="variacao_item2"
+					type="integer"
+					label="MOD_CHAMADA_FIELD_VARIACAO_LAYOUT02_LABEL"
+					description="MOD_CHAMADA_FIELD_VARIACAO_LAYOUT_DESC"
+					first="0"
+					default="0"
+					last="10"
+					step="1"
+				/>				
 			</fieldset>
 			<fieldset name="configuracoes_manuais_item3" label="MOD_CHAMADA_FIELDSET_CONF_MANUAIS_ITEM03_LABEL" addfieldpath="/modules/mod_chamadas/fields/">
 				<field
@@ -580,7 +600,17 @@
 					step="1"
 		           	label="MOD_CHAMADA_FIELD_MANUAL_ORDERING03_LABEL"		           
 		           	description="MOD_CHAMADA_FIELD_MANUAL_ORDERING03_DESC"
-		        />			
+		        />
+		        <field
+					name="variacao_item3"
+					type="integer"
+					label="MOD_CHAMADA_FIELD_VARIACAO_LAYOUT03_LABEL"
+					description="MOD_CHAMADA_FIELD_VARIACAO_LAYOUT_DESC"
+					first="0"
+					default="0"
+					last="10"
+					step="1"
+				/>	
 			</fieldset>
 			<fieldset name="configuracoes_manuais_item4" label="MOD_CHAMADA_FIELDSET_CONF_MANUAIS_ITEM04_LABEL" addfieldpath="/modules/mod_chamadas/fields/">
 				<field
@@ -676,7 +706,17 @@
 					step="1"
 		           	label="MOD_CHAMADA_FIELD_MANUAL_ORDERING04_LABEL"		           
 		           	description="MOD_CHAMADA_FIELD_MANUAL_ORDERING04_DESC"
-		        />			
+		        />
+		        <field
+					name="variacao_item4"
+					type="integer"
+					label="MOD_CHAMADA_FIELD_VARIACAO_LAYOUT04_LABEL"
+					description="MOD_CHAMADA_FIELD_VARIACAO_LAYOUT_DESC"
+					first="0"
+					default="0"
+					last="10"
+					step="1"
+				/>	
 			</fieldset>
 			<fieldset name="opcoes_exibicao" label="MOD_CHAMADA_FIELDSET_EXIBICAO_LABEL">
 
