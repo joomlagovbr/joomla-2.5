@@ -174,7 +174,7 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 		<?php if ($params->get('show_author') && !empty($this->item->author )): ?>
 		<li class="hide"><?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', $author); ?></li>
 		<?php endif; ?>
-		<li class="hide"><?php echo (($author->state == 1)? 'publicado' : 'n&atilde;o publicado' ) ?></li>
+		<li class="hide"><?php echo (($this->item->state == 1)? 'publicado' : 'n&atilde;o publicado' ) ?></li>
 
 		<li><i class="icon-fixed-width icon-calendar"></i> <?php echo JHtml::_('date', $this->item->publish_up, 'd/m/y'); ?></li>
 		<li><i class="icon-fixed-width icon-time"></i> <?php echo JHtml::_('date', $this->item->publish_up, 'H\hi'); ?></li>
