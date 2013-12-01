@@ -78,7 +78,8 @@ K2HelperUtilities::setDefaultImage($this->item, 'itemlist', $this->params);
 		<!-- Item tags -->		
 		<?php $tags = array(); ?>
 	    <?php foreach ($this->item->tags as $tag): ?>
-	    <?php $tags[] = '<span><a href="'.$tag->link.'">'. $tag->name.'</a></span>'; ?>	    
+	    <?php //$tags[] = '<span><a href="'.$tag->link.'">'. $tag->name.'</a></span>'; ?>	    
+	    <?php $tags[] = '<span><a href="'.TmplK2Helper::getSearchTagLink($tag->name).'">'. $tag->name.'</a></span>'; ?>	    
 	    <?php endforeach; ?>
 		<?php echo implode('<span class="separator">,</span>', $tags); ?>
 		</p>
