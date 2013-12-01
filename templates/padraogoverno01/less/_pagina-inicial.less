@@ -148,15 +148,18 @@ main div.container {
      .module-twitter-facebook, #content.internas .module-twitter-facebook {
         @border-color:darken(@cor-cinza-medio, 15%);
         .header { padding-bottom:0 !important;
-            h2 { display:block; padding:6px 10px 0 10px; border-top:1px solid @border-color; border-left:1px solid @border-color; border-right:1px solid @border-color; .rounded-corners(8px 8px 0 0); margin:0 !important; text-align:center; font-size:0.9em; font-weight:300 }
+            h2, li.active a { color:@cor-preto; display:block; background:@cor-cinza-claro; border-top:1px solid @border-color; border-left:1px solid @border-color; border-right:1px solid @border-color; .rounded-corners(8px 8px 0 0); margin:0 !important; text-align:center; font-size:1em; font-weight:400; }
+            li a { color:@cor-cinza-escuro; }
             h2.active { background:@cor-cinza-claro; }
             h2.hide { display:none !important; }
+            ul { margin:0; border:none }
+            li { list-style: none !important; margin:0 !important }
         }
         .pane {
             padding-bottom:0; background:@cor-cinza-claro; border:1px solid @border-color; margin:-1px 0 20px 0 !important; .rounded-corners(0 8px 8px 8px); 
         }
-        .twitter-content { min-height:350px;
-            iframe{ min-height:350px; }
+        .twitter-content, .facebook-content { min-height:350px; overflow: hidden;
+            iframe{ min-height:350px; background: @cor-branco; }
         }
      }
      .module-box-01-top-adjust { margin-top:29px; }

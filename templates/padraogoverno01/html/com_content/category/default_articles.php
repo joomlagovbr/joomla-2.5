@@ -102,7 +102,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 						$author = $article->created_by_alias ? $article->created_by_alias : $article->author;
 						?>
 						<li class="hide"><?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', $author); ?></li>
-						<li class="hide"><?php echo (($author->state == 1)? 'publicado' : 'n&atilde;o publicado' ) ?></li>
+						<li class="hide"><?php echo (($article->state == 1)? 'publicado' : 'n&atilde;o publicado' ) ?></li>
 		
 						<li><i class="icon-fixed-width icon-calendar"></i> <?php echo JHtml::_('date', $article->publish_up, 'd/m/y'); ?></li>
 						<li><i class="icon-fixed-width icon-time"></i> <?php echo JHtml::_('date', $article->publish_up, 'H\hi'); ?></li>
