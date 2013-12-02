@@ -1,7 +1,7 @@
 <?php
 defined('_JEXEC') or die;
 
-class ModeloArticle_content
+class ModeloArticle_k2
 {
 	public function getListaModelo($params) 
 	{
@@ -20,12 +20,12 @@ class ModeloArticle_content
 		//Consulta
 		$query	= $db->getQuery(true);
 		$query->clear();
-		$query->select('cont.id, cont.catid, cont.alias, cont.created AS created_date, cont.modified AS modify_date, cont.publish_up AS publish_date');
-		$query->from('#__content cont');
-		$query->from('#__categories cat');
+		$query->select('cont.id, cont.catid, cont.video, cont.video_caption, cont.video_credits, cont.alias, cont.created AS created_date, cont.modified AS modify_date, cont.publish_up AS publish_date');
+		$query->from('#__k2_items cont');
+		$query->from('#__k2_categories cat');
 
 		$query->where('cont.catid = cat.id');
-		$query->where('cont.state=1');
+		$query->where('cont.published=1');
 		$query->where('cat.published = 1');
 		$query->where('cont.access IN ('.$groups.')');
 		$query->where('cat.access IN ('.$groups.')');
@@ -40,12 +40,15 @@ class ModeloArticle_content
 		//Valor 2 = somente destaque
 		elseif($params->get('destaque') == 2){
 			$query->where('cont.featured = 1');
-		}
-		
+		}		
 		
 		//Traz o resultado do chapeu se existir
 		if($params->get('chapeu') && $params->get('chapeu') != '0'  && $params->get('chapeu') != 'nenhum' ){
-			$query->select($params->get('chapeu').' AS chapeu');
+			
+			if($params->get('chapeu')=='cont.xreference')
+				$params->set('chapeu', 'cont.extra_fields');
+
+			$query->select($params->get('chapeu', 'cont.extra_fields').' AS chapeu');
 		}
 		
 		//Traz o resultado do título ou não
@@ -55,7 +58,7 @@ class ModeloArticle_content
 
 		//Traz o resultado da imagem ou não
 		if($params->get('exibir_imagem')){
-			$query->select('cont.images');
+			$query->select($db->Quote("").' AS images');
 		}
 
 		//Traz o resultado do introtext ou não
@@ -64,7 +67,7 @@ class ModeloArticle_content
 		}
 
 		if($params->get('somente_imagem')){
-			$query->where('cont.images NOT LIKE \'{"image_intro":""%\'');
+			$query->where('cont.image_caption <> '.$db->Quote(""));
 		}		
 
 		//obtem o valor de configuracao quando um unico artigo sera exibido...
@@ -74,61 +77,89 @@ class ModeloArticle_content
 		if( empty($id_unique_article) )
 		{
 			//Implode nas categorias selecionadas
-			$cat = implode(',', $params->get('catid'));
+			$cat = $params->get('catid_components');
+			$categories = explode(',', $cat);
 
 			//Verifica se irá filtrar por categoria
-			if($params->get('buscar_cat_tag') != '2' && $params->get('catid')){			
+			if($params->get('buscar_cat_tag') != '2' && $params->get('catid_components')){			
 				//Subquery para trazer os id's das categorias filhas			
 				if($params->get('visualizar_filho')){
+
+					//limite de 3 niveis para que o desempenho nao seja muito prejudicado.
+					if($params->get('nivel')>3)
+						$params->set('nivel', 3);
+
 					$subQuery = $db->getQuery(true);
-					$subQuery->select('filho.id');
-					$subQuery->from('#__categories AS pai');
-					$subQuery->from('#__categories AS filho');
-					$subQuery->where('pai.id IN ('.$cat.')');
-					$subQuery->where('filho.lft >= pai.lft');
-					$subQuery->where('filho.rgt <= pai.rgt');
-					$subQuery->where('filho.published = 1');
-					$subQuery->where('pai.published = 1');
-		
-					//Define o nível máximo da categoria
-					if($params->get('nivel') && count($params->get('catid')) == 1){
-						$subQuery->where('filho.level <= '. $params->get('nivel'));
+					
+					for ($i=1; $i <= $params->get('nivel'); $i++) { 
+
+						$subQuery->clear();
+						$subQuery->select('filho.id');
+						$subQuery->from('#__k2_categories AS pai');
+						$subQuery->innerJoin('#__k2_categories AS filho ON filho.parent = pai.id');
+						$subQuery->where('pai.id IN ('.$cat.')');
+						$subQuery->where('filho.published = 1');
+						$subQuery->where('pai.published = 1');
+
+						$db->setQuery($subQuery);
+						$result = $db->loadResultArray();
+
+						if(count($result)==0)
+							break;
+
+						$categories = array_merge($categories, $result);
+						$cat = implode(',',$result);
+
 					}
-		
+					$categories = array_unique($categories);
+					foreach($categories as &$category)
+					{
+						$category = intval($category);
+					}
+					$categories = implode(',', $categories);
+					
 					//Filtra as categorias que deverão ser listadas.
-					$query->where('cont.catid IN ('.$subQuery.')');
+					$query->where('cont.catid IN ('.$categories.')');
 				}else{
 					$query->where('cont.catid = '.$cat);				
 				}
 			}
 
-			 /* ANTENÇÃO
-			 * O CÓDIGO ABAIXO FUNCIONA APENAS NA VERSÃO 3.X.X
-			 * NA VERSÃO 2.5 OU INFERIOR O COMANDO ABAIXO SERÁ DESCONSIDERADO 
-			 */
+// var_dump($params->get('buscar_cat_tag'));
+// var_dump($params->get('tags'));
+// 			die();
 			
-			//Pega a versão do Joomla
-			jimport('cms.version');
-			$versao = new JVersion;		
-			$versaoint = (int)str_replace('.', '', $versao->RELEASE);
 			
-			//verifica se a versão é superior a 2.5
-			if($versaoint > 25){
-				//Verifica se irá filtrar por tag
-				if($params->get('buscar_cat_tag') != '1' && $params->get('tags')){			
-					//Pega os id's em array e separa por vírgulas 
-					$tags = implode(',', $params->get('tags'));
+			//Verifica se irá filtrar por tag
+			if($params->get('buscar_cat_tag') != '1' && $params->get('tags')){			
+
+				// $tags = explode(',', $params->get('tags'));
+				$tags = $params->get('tags');
+
+				if(count($tags)>0):
+					for ($i=0, $limit=count($tags); $i < $limit; $i++) { 
+						$tags[$i] = trim($tags[$i]);
+						$tags[$i] = $db->Quote($tags[$i]);
+					}
+					$tags = implode(',',$tags);
 					
-					$query->from('#__contentitem_tag_map mtag');
-					$query->from('#__tags tag');
-					$query->where('cont.id = mtag.content_item_id');
-					$query->where('tag.id = mtag.tag_id');
-					$query->where('tag.published = 1');
-					$query->where('tag.access IN ('.$groups.')');
-					$query->where('tag_id IN ('.$tags.')');
-					$query->group('cont.id');
-				}
-			}			
+					$subQuery = $db->getQuery(true);
+					$subQuery->clear();
+					$subQuery->select('x.itemID');
+					$subQuery->from('#__k2_tags t');
+					$subQuery->innerJoin('#__k2_tags_xref x ON t.id = x.tagID');
+					$subQuery->where('name IN ('.$tags.')');
+
+					$db->setQuery($subQuery);
+					$result = $db->loadResultArray();
+
+					if(count($result)>0)
+					{
+						$query->where('cont.id IN ('.implode(',',$result).')');
+					}					
+				endif;
+			}
+		
 		}
 		else //se o valor de id_unique_article nao estiver vazio
 		{
@@ -138,19 +169,39 @@ class ModeloArticle_content
 		
 		$query->order('cont.'.$params->get('ordem'), $params->get('ordem_direction'));
 		$db->setQuery($query,0,$params->get('quantidade'));
-		
+
+
 		$lista = $db->loadObjectList();
-		
+
 		//pre processa os itens do array para valores padrao e sobrescricao dos dados pelo modulo
 		$lista_counter = count($lista);
-		
+		$layout = $params->get('layout');
+		$layout = explode(':',$layout);
+		$layout = $layout[1];
+		$allvideosplugin_params = false;
+
 		for ($i=0; $i < $lista_counter; $i++) { 
 
 			//chapeu e title
-			if($params->get('chapeu') && $params->get('chapeu') != '0'  && $params->get('chapeu') != 'nenhum')			
+			if($params->get('chapeu') && $params->get('chapeu') != '0'  && $params->get('chapeu') != 'nenhum')
+			{
 				$lista[$i]->chapeu = ($params->get('chapeu_item'.($i+1), '') != '')? $params->get('chapeu_item'.($i+1) ) : @$lista[$i]->chapeu;
+				if($lista[$i]->chapeu ==@$lista[$i]->chapeu && !empty($lista[$i]->chapeu))
+				{
+					$lista[$i]->chapeu = json_decode($lista[$i]->chapeu);
+					if(!is_null($lista[$i]->chapeu))
+					{
+						if(@isset($lista[$i]->chapeu->chapeu))
+							$lista[$i]->chapeu = $lista[$i]->chapeu->chapeu;
+						else
+							$lista[$i]->chapeu = NULL;
+					}
+				}
+			}			
 			else
 				$lista[$i]->chapeu = NULL;
+
+			$original_title = $lista[$i]->title;
 
 			if($params->get('exibir_title'))
 				$lista[$i]->title = ($params->get('title_item'.($i+1), '') != '')? $params->get('title_item'.($i+1) ) : $lista[$i]->title;
@@ -170,11 +221,28 @@ class ModeloArticle_content
 
 			// OPCOES DE IMAGEM DO ARTIGO
 			if ($params->get('exibir_imagem')) {
-				$lista[$i]->images = json_decode($lista[$i]->images);				
+				// todo: tratamento para adquirir nomes dos arquivos de imagem. E um padrao, nao fica em banco de dados
+
+				if(!empty($lista[$i]->images))
+					$lista[$i]->images = json_decode($lista[$i]->images);
+
 			}
 
 			if( $params->get('image_item'.($i+1), '') != '') {
 				$lista[$i]->image_url = $params->get('image_item'.($i+1) );
+			}
+			elseif(!empty($lista[$i]->video) && $layout=='listagem-audio' && strpos($lista[$i]->video, '{/mp3}')!==false)
+			{				
+				if(!$allvideosplugin_params)
+				{
+					$allvideosplugin = JPluginHelper::getPlugin('content','jw_allvideos');
+					$allvideosplugin_params = json_decode($allvideosplugin->params);				
+				}
+				$file = JURI::root() . $allvideosplugin_params->afolder .'/'. str_replace(array('{mp3}', '{/mp3}'), '', $lista[$i]->video).'.mp3';
+				$lista[$i]->image_url = $file;
+				$lista[$i]->image_caption = $lista[$i]->video_credits;
+				$lista[$i]->image_alt = $lista[$i]->video_caption;
+				
 			}
 			elseif($params->get('exibir_imagem')) {
 				$lista[$i]->image_url = @$lista[$i]->images->image_intro;
@@ -182,6 +250,7 @@ class ModeloArticle_content
 			else {
 				$lista[$i]->image_url = '';				
 			}
+
 
 			if( $params->get('image_item'.($i+1).'_align', '') != '') {
 				$lista[$i]->image_align = $params->get('image_item'.($i+1).'_align' );
@@ -196,20 +265,20 @@ class ModeloArticle_content
 			if( $params->get('image_item'.($i+1).'_alt', '') != '') {
 				$lista[$i]->image_alt = $params->get('image_item'.($i+1).'_alt' );
 			}
-			elseif($params->get('exibir_imagem')) {
+			elseif($params->get('exibir_imagem') && empty($lista[$i]->image_alt)) {
 				$lista[$i]->image_alt = @$lista[$i]->images->image_intro_alt;
 			}
-			else {
+			elseif(empty($lista[$i]->image_alt)) {
 				$lista[$i]->image_alt = '';				
 			}
 
 			if( $params->get('image_item'.($i+1).'_caption', '') != '') {
 				$lista[$i]->image_caption = $params->get('image_item'.($i+1).'_caption' );
 			}
-			elseif($params->get('exibir_imagem')) {
+			elseif($params->get('exibir_imagem') && empty($lista[$i]->image_caption)) {
 				$lista[$i]->image_caption = @$lista[$i]->images->image_intro_caption;
 			}
-			else {
+			elseif(empty($lista[$i]->image_caption)) {
 				$lista[$i]->image_caption = '';				
 			}
 
@@ -218,7 +287,10 @@ class ModeloArticle_content
 			$fields[] = 'url_simple_item'.($i+1);
 			$fields[] = 'url_menu_item'.($i+1);
 			$fields[] = 'url_article_item'.($i+1);
-			$lista[$i]->link = ModChamadasHelper::getLink($params, $fields, $lista[$i]);
+			$lista[$i]->link = ModChamadasHelper::getLink($params, $fields, $lista[$i], false);
+
+			if(empty($lista[$i]->link))
+				$lista[$i]->link = JRoute::_('index.php?option=com_k2&view=item&id='.$lista[$i]->id.':'.$original_title);
 
 		}
 

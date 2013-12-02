@@ -9,14 +9,14 @@
 
 defined('_JEXEC') or die;
 
-if($params->get('modelo') != 'manual'):
-  echo '<h3>Atenção</h3><p>Somente a fonte de dados manual encontra-se preparada para exibir o módulo de áudios. Acesse a área administrativa e mude a fonte de dados do módulo.</p>';
+if($params->get('modelo') != 'manual' && $params->get('modelo') != 'article_k2'):
+  echo '<h3>Atenção</h3><p>Somente as fontes de dados manual e article_k2 encontram-se preparadas para adquirir dados do módulo de áudios. Acesse a área administrativa e mude a fonte de dados do módulo.</p>';
 else:
-  //preencher link quando categoria for unica
-  if (empty($link_saiba_mais) && count($params->get('catid'))==1 && $params->get('buscar_cat_tag')==1) {
-  	$catid = $params->get('catid');
-  	$link_saiba_mais = JRoute::_('index.php?option=com_content&view=category&id='.$catid[0]);
-  }
+  // //preencher link quando categoria for unica
+  // if (empty($link_saiba_mais) && count($params->get('catid'))==1 && $params->get('buscar_cat_tag')==1) {
+  // 	$catid = $params->get('catid');
+  // 	$link_saiba_mais = JRoute::_('index.php?option=com_content&view=category&id='.$catid[0]);
+  // }
   $document = JFactory::getDocument();
   $document->addStyleSheet(JURI::root().'templates/padraogoverno01/jplayer/skin/portalpadrao01/jplayer.css');
   $document->addScript(JURI::root().'templates/padraogoverno01/jplayer/js/jquery.jplayer.min.js');
@@ -26,6 +26,9 @@ else:
     $media_url = $lista->image_url;
     $extension = substr($media_url, strrpos($media_url, '.')+1);
   ?>
+    <?php if ($params->get('exibir_title') && !empty($lista->title)): ?>
+    <h3><?php echo $lista->title; ?></h3>
+    <?php endif; ?>
   <!-- inicio jplayer -->
   <div class="jp-audio-slim">    
     <div id="jplayer_<?php echo $module->id.'_'.$k; ?>" class="jp-jplayer"></div>
@@ -68,11 +71,10 @@ else:
   });
   //]]>
   </script><noscript>&nbsp;<!-- item para fins de acessibilidade --></noscript>
-    <?php if ($params->get('exibir_title') && !empty($lista->title)): ?>
-    <h3><?php echo $lista->title; ?></h3>
-    <?php endif; ?>
     <?php if ($params->get('exibir_introtext') && $lista->introtext): ?>
+      <div class="formated-description">
       <?php echo $lista->introtext; ?>
+      </div>
     <?php endif; ?>
   <?php endforeach; ?>
   
