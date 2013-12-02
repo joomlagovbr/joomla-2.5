@@ -959,8 +959,36 @@ $document->addScriptDeclaration("
 </form>
 <!-- INCLUSAO PROJETO PORTAL PADRAO -->
 <script type="text/javascript">
-	// jQuery(document).ready(function(){
-	// 	alert('teste');
-	// });
+	jQuery(document).ready(function(){		
+		jQuery('#catid').change(function(){
+			document.hideFields = window.setInterval(hideFields, 750);
+		});
+		hideFields(true);		
+	});
+	function hideFields(init)
+	{
+		jQuery('textarea[id^="K2ExtraField_"]').each(function(i){			
+			val = jQuery(this).text();			
+			if(val.substring(0,5)=='#####')
+			{
+				jQuery('li[id^="tab"]').show();
+				val = val.replace('#####','');
+				items = val.split(',');
+				limit_items = items.length;
+				for(i=0;i<limit_items;i++)
+				{
+					jQuery('#'+items[i]).hide();
+				}
+				jQuery(this).text('');
+				if(!init)
+					clearInterval(document.hideFields);
+			}
+			else if(!init)
+			{
+				clearInterval(document.hideFields);
+				init = true;
+			}
+		});
+	}
 </script>
 <!-- FIM INCLUSAO PROJETO PORTAL PADRAO -->
