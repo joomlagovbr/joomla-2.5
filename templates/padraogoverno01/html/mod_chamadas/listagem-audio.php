@@ -19,8 +19,8 @@ else:
   // }
   $document = JFactory::getDocument();
   $document->addStyleSheet(JURI::root().'templates/padraogoverno01/jplayer/skin/portalpadrao01/jplayer.css');
-  $document->addScript(JURI::root().'templates/padraogoverno01/jplayer/js/jquery.jplayer.min.js');
-
+  $script = '<script type="text/javascript" src="'.JURI::root().'templates/padraogoverno01/jplayer/js/jquery.jplayer.min.js"></script><noscript>A exibição do player de áudio desta página depende de javascript.</noscript>';
+  $document->addCustomTag($script);
   foreach ($lista_chamadas as $k => $lista):
 
     $media_url = $lista->image_url;

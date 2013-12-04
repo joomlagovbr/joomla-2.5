@@ -53,8 +53,8 @@ class plgSystemK2 extends JPlugin
 
 		// jQuery and K2 JS loading
 		//ALTERACAO PROJETO PORTAL PADRAO
-		// K2HelperHTML::loadjQuery();
-		$document->addScript(JURI::root(true).'/components/com_k2/js/k2.js?v2.6.7&amp;sitepath='.JURI::root(true).'/');
+		// K2HelperHTML::loadjQuery();		
+		// $document->addScript(JURI::root(true).'/components/com_k2/js/k2.js?v2.6.7&amp;sitepath='.JURI::root(true).'/');
 		//FIM ALTERACAO PROJETO PORTAL PADRAO
 		//$document->addScriptDeclaration("var K2SitePath = '".JURI::root(true)."/';");
 

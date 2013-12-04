@@ -201,7 +201,7 @@ class ModeloArticle_k2
 			else
 				$lista[$i]->chapeu = NULL;
 
-			$original_title = $lista[$i]->title;
+			@$original_title = $lista[$i]->title;
 
 			if($params->get('exibir_title'))
 				$lista[$i]->title = ($params->get('title_item'.($i+1), '') != '')? $params->get('title_item'.($i+1) ) : $lista[$i]->title;

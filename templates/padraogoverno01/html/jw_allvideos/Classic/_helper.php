@@ -29,7 +29,8 @@ class TmplAllvideosHelper
 	public static function addJs($path)
 	{
 		$doc = JFactory::getDocument();
-		$doc->_scripts[$path] = array('mime'=>'text/javascript','defer'=> false, 'async'=>false);		
+		$script = '<script type="text/javascript" src="'.$path.'"></script><noscript>Essa página depende do carramento de javascript.</noscript>';
+		$doc->addCustomTag($script);	
 	}
 
 	public static function removeJs($wanted = array())

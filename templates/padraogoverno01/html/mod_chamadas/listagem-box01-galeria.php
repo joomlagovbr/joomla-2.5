@@ -18,6 +18,12 @@ if (empty($link_saiba_mais) && count($params->get('catid'))==1 && $params->get('
 	<div id="gallery-carousel-<?php echo $module->id ?>" class="carousel slide">
 		<div class="carousel-inner">
 			<?php foreach ($lista_chamadas as $k => $lista): ?>
+			<?php 
+			if($lista->image_alt=='')
+			{
+				$lista->image_alt = 'Foto da galeria de imagens: sem descrição informada.';
+			}
+			?>
 			<div class="item<?php if($k==0): ?> active<?php endif; ?>">
 				<img alt="<?php echo $lista->image_alt ?>" src="<?php echo $lista->image_url ?>">
 				<div class="galleria-info">
@@ -41,7 +47,7 @@ if (empty($link_saiba_mais) && count($params->get('catid'))==1 && $params->get('
 			<?php reset($lista_chamadas); ?>
 			<?php foreach ($lista_chamadas as $k => $lista): ?>
 			<li class="galeria-image">
-				<a href="#0<?php echo $k ?>"><img src="<?php echo $lista->image_url; ?>" alt="Img navegação."></a>
+				<a href="#0<?php echo $k ?>"><img src="<?php echo $lista->image_url; ?>" alt="Miniatura para navegação, foto <?php echo $k+1 ?>"></a>
 			</li>
 			<?php endforeach; ?>			
 		</ul>

@@ -10,6 +10,9 @@
 .no-padding-top {
   padding-top: 0 !important;
 }
+.no-bkg {
+  background: none !important;
+}
 @media screen {
   @font-face {
     font-weight: normal !important;
