@@ -41,7 +41,8 @@ $active_item = TmplPadraoGoverno01Helper::getActiveItemid();
     <![endif]-->        
     <?php if(TmplPadraoGoverno01Helper::beforeHead('local_jquery', $this)) TmplPadraoGoverno01Helper::getJqueryScripts( $this ); ?>
     <?php if(TmplPadraoGoverno01Helper::beforeHead('local_mainscript', $this)) TmplPadraoGoverno01Helper::getTemplateMainScripts( $this ); ?>
-    <jdoc:include type="head" />    
+    <jdoc:include type="head" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">    
     <?php if(TmplPadraoGoverno01Helper::afterHead('local_jquery', $this)) TmplPadraoGoverno01Helper::getJqueryScripts( $this ); ?>
     <?php if(TmplPadraoGoverno01Helper::afterHead('local_mainscript', $this)) TmplPadraoGoverno01Helper::getTemplateMainScripts( $this ); ?>
     <?php TmplPadraoGoverno01Helper::getFontStyle( $this ); ?>
