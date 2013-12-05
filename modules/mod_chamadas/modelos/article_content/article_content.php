@@ -53,10 +53,10 @@ class ModeloArticle_content
 			$query->select('cont.title');
 		}
 
-		//Traz o resultado da imagem ou não
-		if($params->get('exibir_imagem')){
+		//Traz o resultado da imagem ou não: comentado para permitir overwrite.
+		// if($params->get('exibir_imagem')){
 			$query->select('cont.images');
-		}
+		// }
 
 		//Traz o resultado do introtext ou não
 		if($params->get('exibir_introtext')){
@@ -169,14 +169,16 @@ class ModeloArticle_content
 			}
 
 			// OPCOES DE IMAGEM DO ARTIGO
-			if ($params->get('exibir_imagem')) {
+			
+
+			if ((($params->get('exibir_imagem') && $params->get('show_image_item'.($i+1))=='') || $params->get('show_image_item'.($i+1))==1)) {
 				$lista[$i]->images = json_decode($lista[$i]->images);				
 			}
 
 			if( $params->get('image_item'.($i+1), '') != '') {
 				$lista[$i]->image_url = $params->get('image_item'.($i+1) );
 			}
-			elseif($params->get('exibir_imagem')) {
+			elseif((($params->get('exibir_imagem') && $params->get('show_image_item'.($i+1))=='') || $params->get('show_image_item'.($i+1))==1)) {
 				$lista[$i]->image_url = @$lista[$i]->images->image_intro;
 			}
 			else {

@@ -322,6 +322,18 @@
 					type="spacer"
 					hr="true"
 				/>
+				<field 
+					name="show_image_item1"
+					class="btn-group"
+					type="list"
+					default=""
+					label="MOD_CHAMADA_FIELD_MANUAL_SHOWIMAGE01_LABEL"
+					description="MOD_CHAMADA_FIELD_MANUAL_SHOWIMAGE01_DESC"
+				>
+					<option value="">JOPTION_USE_DEFAULT</option>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
 				<field
 					name="image_item1"
 					type="media"
@@ -430,6 +442,18 @@
 					type="spacer"
 					hr="true"
 				/>
+				<field 
+					name="show_image_item2"
+					class="btn-group"
+					type="list"
+					default=""
+					label="MOD_CHAMADA_FIELD_MANUAL_SHOWIMAGE02_LABEL"
+					description="MOD_CHAMADA_FIELD_MANUAL_SHOWIMAGE02_DESC"
+				>
+					<option value="">JOPTION_USE_DEFAULT</option>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
 				<field
 					name="image_item2"
 					type="media"
@@ -536,6 +560,18 @@
 					type="spacer"
 					hr="true"
 				/>
+				<field 
+					name="show_image_item3"
+					class="btn-group"
+					type="list"
+					default=""
+					label="MOD_CHAMADA_FIELD_MANUAL_SHOWIMAGE03_LABEL"
+					description="MOD_CHAMADA_FIELD_MANUAL_SHOWIMAGE03_DESC"
+				>
+					<option value="">JOPTION_USE_DEFAULT</option>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
 				<field
 					name="image_item3"
 					type="media"
@@ -642,6 +678,18 @@
 					type="spacer"
 					hr="true"
 				/>
+				<field 
+					name="show_image_item4"
+					class="btn-group"
+					type="list"
+					default=""
+					label="MOD_CHAMADA_FIELD_MANUAL_SHOWIMAGE04_LABEL"
+					description="MOD_CHAMADA_FIELD_MANUAL_SHOWIMAGE04_DESC"
+				>
+					<option value="">JOPTION_USE_DEFAULT</option>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
 				<field
 					name="image_item4"
 					type="media"

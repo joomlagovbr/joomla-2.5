@@ -7,8 +7,14 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-defined('_JEXEC') or die; ?>
-<div class="manchete-texto-lateral">
+defined('_JEXEC') or die;
+
+$subheader = 'h'.(intval(substr($params->get('header_tag'), 1))+1);
+$title = ( $params->get('titulo_alternativo', '') != '' )? $params->get('titulo_alternativo') : @$lista_chamadas[0]->chapeu;
+if(empty($title))
+	$module->showtitle = false;
+?>
+
 <?php
 $lista_chamadas_counter = count($lista_chamadas);
 if( $lista_chamadas_counter == 3 )
@@ -17,49 +23,51 @@ elseif( $lista_chamadas_counter > 3 )
 	$class_container = 'span4';
 else
 	$class_container = '';
-
-$subheader = 'h'.(intval(substr($params->get('header_tag'), 1))+1);
 ?>
+
+<div class="manchete-principal">
+
+<?php if ($module->showtitle): ?>
+	<?php if(strpos($params->get('moduleclass_sfx'), 'no-outstanding-title')===false): ?><div class="outstanding-header"><?php endif; ?>
+ 	<span class="outstanding-title"><span class="title"><?php echo $title; ?></span></span>
+ 	<?php if(strpos($params->get('moduleclass_sfx'), 'no-outstanding-title')===false): ?></div><?php endif; ?>
+<?php endif; ?>
+
 <?php for ($i=0; $i < $lista_chamadas_counter; $i++):
 	$lista = $lista_chamadas[$i];
 ?>
 	<?php if($i==0): ?>
 	<div class="row-fluid">
-		<?php if ($lista->image_url != ''): ?>	
-		<div class="span4 <?php if ( $lista->image_align != 'right'): ?>no-margin<?php else: ?>pull-right<?php endif; ?>">
-		<?php else: ?>
-		<div class="span12 no-margin">	
-		<?php endif; ?>
-		
-		<?php if (@$lista->chapeu): ?>
-		<p class="subtitle">
-			<?php echo $lista->chapeu ?>
-		</p>
-		<?php endif; ?>
-
-		<?php if ($params->get('exibir_title') && !empty($lista->title)): ?>			
+	
+		<div class="span12 no-margin">
+			<?php if ($params->get('exibir_title') && !empty($lista->title)): ?>			
 				<<?php echo $params->get('header_tag')?> <?php if ($params->get('header_class')): echo 'class="'.$params->get('header_class').'"'; endif; ?>>
 					<a href="<?php echo $lista->link ?>" <?php if ($params->get('header_class')): echo 'class="'.$params->get('header_class').'"'; endif; ?>>
 						<?php echo $lista->title ?>
 					</a>
 				</<?php echo $params->get('header_tag')?>>
-		<?php endif; ?>
-
-		<?php if ($params->get('exibir_introtext') && $lista->introtext): ?>
-			<?php echo $lista->introtext; ?>
-		<?php endif; ?>
+		<?php endif; ?>	
 		</div>
+	</div>
+	<div class="row-fluid">
 		<?php if ($lista->image_url != ''): ?>
-		<div class="span8<?php if ( $lista->image_align == 'right'): ?> no-margin<?php endif; ?> img-manchete-lateral">				
+		<div class="span12 no-margin">				
 			<?php if (!empty($lista->image_url)): ?>
 				<?php if(strpos($lista->image_url, 'www.youtube')!==false): ?>
-					<object width="490" height="368"><param value="<?php echo 'http://'.$lista->image_url; ?>" name="movie"><param value="true" name="allowFullScreen"><param value="always" name="allowscriptaccess"><embed width="490" height="368" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="<?php echo 'http://'.$lista->image_url; ?>"></object>
+					<object width="750" height="500"><param value="<?php echo 'http://'.$lista->image_url; ?>" name="movie"><param value="true" name="allowFullScreen"><param value="always" name="allowscriptaccess"><embed width="490" height="368" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="<?php echo 'http://'.$lista->image_url; ?>"></object>
 				<?php else: ?>				
 					<a href="<?php echo $lista->link ?>">
-						<img src="<?php echo $lista->image_url ?>" class="img-rounded" width="490" height="auto" alt="<?php echo $lista->image_alt ?>" />
+						<img src="<?php echo $lista->image_url ?>" class="img-rounded" width="750" height="auto" alt="<?php echo $lista->image_alt ?>" />
 					</a>				
 				<?php endif; ?>
 			<?php endif; ?>	
+		</div>
+	</div>
+	<div class="row-fluid">
+		<?php endif; ?>
+		<?php if ($params->get('exibir_introtext') && $lista->introtext): ?>
+		<div class="description-main">
+			<?php echo $lista->introtext; ?>
 		</div>
 		<?php endif; ?>
 	</div>
