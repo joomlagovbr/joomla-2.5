@@ -105,16 +105,13 @@ function resize() {
 					jQuery(this).find('i').addClass('icon-chevron-down');
 					jQuery(this).find('i').removeClass('icon-chevron-up');
 				}
-			});			
+			});	
 		}
 		if( jQuery('#navigation-section').is(':visible') )
 			jQuery('#navigation-section').hide();
 
 		if( ! jQuery('#em-destaque').is(':visible') )
 			jQuery('#em-destaque').fadeIn();
-
-		module_box_adjust('auto');
-		module_box_adjust(null);
 	}	
 	else
 	{
@@ -125,7 +122,7 @@ function resize() {
 			jQuery('#navigation h2').next().show();				
 			jQuery('#navigation-section').fadeIn();
 			jQuery('#em-destaque').fadeIn();
-			module_box_adjust(null);
+			module_box_adjust();
 		}
 	}
 	//fim ajustes responsividade
@@ -146,7 +143,7 @@ function browser_adjusts() {
 // fim ajustes de navegador
 
 //ajustes de tamanho dos itens para .module-box-01
-function module_box_adjust( val ) {
+function module_box_adjust() {
 	jQuery('.module-box-01 .lista li').each(function(key){
 		limit = 3 * parseInt(jQuery('.module-box-01 .lista li').size()/3);
 
