@@ -32,6 +32,7 @@
       </fieldset>
       <fieldset name="twitter" label="Twitter - Configurações">
         <field name="twitter_height" type="text" default="350" label="Altura do módulo" description="Altura do módulo twitter. Não é necessário acrescentar 'px' ao final do valor." />
+        <field name="twitter_widget_id" type="text" default="" label="Widget ID" description="ID do widget no twitter. Necessário gerar o widget no twitter para passar o número de ID do widget." />
         <field name="twitter_user" type="text" default="" label="Usuário do Twitter" description="Conta de usuário do twitter/canal." />
         <field name="twitter_text_link_error" type="text" default="Microblog" label="Texto - Link da mensagem de erro" description="Quando ocorre um erro e o módulo de twitter não é carregado é apresentado um link para a Conta do twitter configurada, mas você pode alterar o texto do link. Ex: Acesse o Microblog Portal Brasil." size="55" />
         <field name="twitter_class" type="text" default="" label="Classe módulo Twitter" description="classe css adicional para módulo twitter" />

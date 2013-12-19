@@ -24,9 +24,10 @@ public static function getConfigs(&$params)
     //configuracoes twitter
     $config['twitter_user']            = $params->get('twitter_user', '');
     $config['twitter_height']          = $params->get('twitter_height','350');
+    $config['twitter_widget_id']       = $params->get('twitter_widget_id','');
     $config['twitter_text_link_error'] = $params->get('twitter_text_link_error','Microblog');
     $config['twitter_class']           = $params->get('twitter_class');
-    if($config['twitter_user']=='')
+    if($config['twitter_user']=='' || $config['twitter_widget_id']=='')
         $config['twitter_show'] = false;
     else
     {
