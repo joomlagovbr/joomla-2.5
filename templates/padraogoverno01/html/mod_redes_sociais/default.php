@@ -34,7 +34,7 @@ if($config['twitter_show'] || $config['facebook_show']):
   <div class="tab-pane active <?php echo $config['twitter_class']; ?> pane" id="twitter-pane">
     <h2 class="hide">Twitter</h2>
     <div class="twitter-content">
-        <a height="<?php echo $config['twitter_height']; ?>" data-widget-id="<?php echo $config['twitter_widget_id']; ?>" href="https://twitter.com/<?php echo $config['twitter_user'] ?>" class="twitter-timeline"><br />Tweets do Portal Brasil</a>
+        <a height="<?php echo $config['twitter_height']; ?>" data-widget-id="<?php echo $config['twitter_widget_id']; ?>" href="https://twitter.com/<?php echo $config['twitter_user'] ?>" class="twitter-timeline"><br /><?php echo $config['twitter_text_link_error']; ?></a>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script><noscript>
             <div class="error">
               <p>Javascript desativado.</p>
@@ -72,7 +72,7 @@ if($config['twitter_show'] || $config['facebook_show']):
   <div class="tab-pane <?php echo $config['twitter_class']; ?> pane" id="twitter-pane">
     <h2 class="hide">Twitter</h2>
     <div class="twitter-content">
-        <a height="<?php echo $config['twitter_height']; ?>" data-widget-id="388035310119964672" href="https://twitter.com/<?php echo $config['twitter_user'] ?>" class="twitter-timeline"><br />Tweets do Portal Brasil</a>
+        <a height="<?php echo $config['twitter_height']; ?>" data-widget-id="<?php echo $config['twitter_widget_id']; ?>" href="https://twitter.com/<?php echo $config['twitter_user'] ?>" class="twitter-timeline"><br /><?php echo $config['twitter_text_link_error']; ?></a>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script><noscript>
             <div class="error">
               <p>Javascript desativado.</p>
