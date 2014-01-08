@@ -153,7 +153,7 @@ if (!empty($this->items)) { ?>
 					echo '</div>';
 				}
 			}
-
+//ate aqui igual
 			if ($value->displayicondetail == 1 ||
 			$value->displayicondownload > 0 || 
 			$value->displayiconfolder == 1 || 
