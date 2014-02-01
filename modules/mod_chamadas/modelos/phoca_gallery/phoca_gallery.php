@@ -150,7 +150,17 @@ class ModeloPhoca_gallery
 			$params->set('quantidade', 1);
 		}
 		
-		$query->order('cont.'.$params->get('ordem'), $params->get('ordem_direction'));
+		if($params->get('ordem')=='publish_up')
+			$params->set('ordem', 'publish_date');
+		else if($params->get('ordem')=='created')
+			$params->set('ordem', 'created_date');
+		else if($params->get('ordem')=='modified')
+			$params->set('ordem', 'modify_date');
+		else
+			$params->set('ordem', 'cont.'.$params->get('ordem'));
+
+		$query->order( $params->get('ordem').' '.$params->get('ordem_direction') );
+		
 		$db->setQuery($query,0,$params->get('quantidade'));
 
 		$lista = $db->loadObjectList();
