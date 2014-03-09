@@ -8,6 +8,8 @@ Participe do grupo do google chamado [Joomla! e-Gov](https://groups.google.com/f
 
 ATENÇÃO
 ---------------------
+Este projeto visa ser um *quickstart* para iniciar projetos próprios de portais padrão em CMS Joomla, e atende as principais especificações e módulos recomendados pela Presidência da República, mas não esgota todos os módulos e recomendações citadas nos manuais.
+
 Os voluntários deste grupo não se responsabilizam pela incorreta utilização deste pacote, bem como pela incorreta configuração do servidor de produção, no que se refere
 aos quesitos segurança e performance.
 
