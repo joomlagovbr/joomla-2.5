@@ -10,8 +10,6 @@
 defined('_JEXEC') or die;
 include('params.php');
 
-
-
 $doc =& JFactory::getDocument();
 if($graphics==1){include('css.php');}
 
@@ -21,7 +19,8 @@ if ($phpuse==1){
 
     if (!file_exists($tmp_file)){   
     $handle = fopen($tmp_file, 'w'); }  
-    $temp=modblank250Helper::phpprocessbm($phpcode,$modno_bm,$tmp_file);
+   	$modblank250Helper= new modblank250Helper();
+    $temp=$modblank250Helper->phpprocessbm($phpcode,$modno_bm,$tmp_file);
     }
 
 //add custom tags to head section
@@ -46,6 +45,6 @@ if ($phpuse==1){
 
 //delete temporary file
 fclose($handle);
-unlink($tmp_file);}
+unlink($tmp_file);$temp="";}
 ?>
 

@@ -55,6 +55,6 @@ if ($modno_bm==0){$modno_bm="BM".($module->id);}
 
 
 $css="";
-
+$temp="";
 $fileroot=str_replace('index.php','',$_SERVER["SCRIPT_FILENAME"]);
 $tmp_file =$fileroot.'modules/mod_blank250/tmpl/temp'.$modno_bm.'.php';
