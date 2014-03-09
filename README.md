@@ -1,4 +1,4 @@
-Portal padrão em CMS Joomla 3.2
+Portal padrão em CMS Joomla 2.5
 ================
 
 Acompanhe as atualizações do projeto
