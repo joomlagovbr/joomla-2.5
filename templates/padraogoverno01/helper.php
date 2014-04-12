@@ -11,6 +11,19 @@ defined('_JEXEC') or die;
 
 class TmplPadraoGoverno01Helper
 {
+	static function init( &$tmpl )
+	{
+		self::addHeaders();
+		self::clearDefaultScripts( $tmpl );
+
+		if($tmpl->params->get('allow_set_color', 0)==0)
+			return;
+
+		$cor = JFactory::getApplication()->input->get('cor', '');
+		if($cor=='verde' || $cor=='azul' || $cor=='branco' || $cor=='amarelo')
+		    $tmpl->params->set('cor', $cor);
+	}
+
 	static function getScripts( &$tmpl )
 	{
 		$javascript_on_footer     = $tmpl->params->get('javascript_on_footer', 0);
@@ -18,11 +31,11 @@ class TmplPadraoGoverno01Helper
 
 		if ( $javascript_on_footer==1 )
 		{
-			return TmplPadraoGoverno01Helper::clearDefaultScripts( $tmpl, true);
+			return self::clearDefaultScripts( $tmpl, true);
 		}
 		else if($clear_default_javascript==1)
 		{
-			TmplPadraoGoverno01Helper::clearDefaultScripts( $tmpl );
+			self::clearDefaultScripts( $tmpl );
 		}
 		
 		return array('scripts'=> array(), 'script'=> array());
@@ -156,6 +169,15 @@ class TmplPadraoGoverno01Helper
 		endif;
 	}
 
+	static function getIconsStyle( &$tmpl )
+	{
+		if($tmpl->params->get('icon_style', 'bitmap-portal-brasil') == 'bitmap-portal-brasil'):
+		?>
+		<link rel="stylesheet" href="<?php echo $tmpl->baseurl; ?>/templates/<?php echo $tmpl->template; ?>/css/icones-bmp-<?php echo $tmpl->params->get('cor', 'verde'); ?>.css" type='text/css'/>
+		<?php
+		endif;
+	}
+
 	static function getActiveItemid()
 	{
 		$app = JFactory::getApplication();
@@ -179,7 +201,7 @@ class TmplPadraoGoverno01Helper
 
 	static function getPageClass( $activeItemid, $only_class = false, $pageclass = false )
 	{
-		$class = TmplPadraoGoverno01Helper::getItemidParam($activeItemid, 'pageclass_sfx');
+		$class = self::getItemidParam($activeItemid, 'pageclass_sfx');
 
 		if($only_class)
 			return $class;
@@ -197,7 +219,7 @@ class TmplPadraoGoverno01Helper
 
 	static function getPagePositionPreffix($activeItemid)
 	{
-		$pos_preffix = TmplPadraoGoverno01Helper::getPageClass($activeItemid, true);		
+		$pos_preffix = self::getPageClass($activeItemid, true);		
 		if(empty($pos_preffix))
 		{
 			$jinput = JFactory::getApplication()->input;
@@ -227,7 +249,7 @@ class TmplPadraoGoverno01Helper
 		return false;
 	}
 
-	static function loadModuleByPosition($position = NULL, $attribs = array(), $modules = NULL) //TmplPadraoGoverno01Helper::loadModuleByPosition('')
+	static function loadModuleByPosition($position = NULL, $attribs = array(), $modules = NULL) //self::loadModuleByPosition('')
 	{
 		if(is_null($modules))
 			$modules = JModuleHelper::getModules( $position );
@@ -280,5 +302,11 @@ class TmplPadraoGoverno01Helper
 			echo '<strong>ID Item de menu ativo:</strong> '.$active_item->id.'<br />';
 			echo '<strong>LINK Item de menu ativo:</strong> '.$active_item->link.'<br />';
 		}
+	}
+
+	static function addHeaders()
+	{
+		//inclusao de cabecalho para correcao de possivel problema de compatibilidade para IE9 abaixo
+		header('X-UA-Compatible: IE=edge,chrome=1');
 	}
 }
