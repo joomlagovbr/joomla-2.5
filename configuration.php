@@ -13,8 +13,8 @@ class JConfig {
     public $debug_lang = '0';
     public $dbtype = 'mysqli';
     public $host = 'localhost';
-    public $user = 'root';
-    public $password = 'root';
+    public $user = 'USUARIO_MUDAR';
+    public $password = 'SENHA_MUDAR';
     public $db = 'portal_modelo';
     public $dbprefix = 'pmgov2013_';
     public $live_site = '';
@@ -53,8 +53,8 @@ class JConfig {
     public $sef_suffix = '0';
     public $unicodeslugs = '0';
     public $feed_limit = '10';
-    public $log_path = '/Users/rafaelberlanda/Documents/www/jg20140308/joomla-2.5/logs';
-    public $tmp_path = '/Users/rafaelberlanda/Documents/www/jg20140308/joomla-2.5/tmp';
+    public $log_path = '/var/www/joomla-2.5/logs';
+    public $tmp_path = '/var/www/joomla-2.5/tmp';
     public $lifetime = '15';
     public $session_handler = 'database';
     public $MetaRights = '';
