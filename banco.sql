@@ -1,7 +1,7 @@
 -- MySQL Administrator dump 1.4
 --
 -- ------------------------------------------------------
--- Server version	5.5.9
+-- Server version	5.5.34
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -833,7 +833,7 @@ INSERT INTO `portal_modelo`.`pmgov2013_extensions` VALUES  (502,'bluestork','tem
  (504,'hathor','template','hathor','',1,1,1,0,'{\"legacy\":false,\"name\":\"hathor\",\"type\":\"template\",\"creationDate\":\"May 2010\",\"author\":\"Andrea Tarr\",\"copyright\":\"Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.\",\"authorEmail\":\"hathor@tarrconsulting.com\",\"authorUrl\":\"http:\\/\\/www.tarrconsulting.com\",\"version\":\"2.5.0\",\"description\":\"TPL_HATHOR_XML_DESCRIPTION\",\"group\":\"\"}','{\"showSiteName\":\"0\",\"colourChoice\":\"0\",\"boldText\":\"0\"}','','',0,'0000-00-00 00:00:00',0,0),
  (600,'English (United Kingdom)','language','en-GB','',0,1,1,1,'{\"legacy\":false,\"name\":\"English (United Kingdom)\",\"type\":\"language\",\"creationDate\":\"2008-03-15\",\"author\":\"Joomla! Project\",\"copyright\":\"Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"2.5.19\",\"description\":\"en-GB site language\",\"group\":\"\"}','','','',0,'0000-00-00 00:00:00',0,0),
  (601,'English (United Kingdom)','language','en-GB','',1,1,1,1,'{\"legacy\":false,\"name\":\"English (United Kingdom)\",\"type\":\"language\",\"creationDate\":\"2008-03-15\",\"author\":\"Joomla! Project\",\"copyright\":\"Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"2.5.19\",\"description\":\"en-GB administrator language\",\"group\":\"\"}','','','',0,'0000-00-00 00:00:00',0,0),
- (700,'files_joomla','file','joomla','',0,1,1,1,'{\"legacy\":false,\"name\":\"files_joomla\",\"type\":\"file\",\"creationDate\":\"March 2014\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2005 - 2014 Open Source Matters. All rights reserved\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"2.5.19\",\"description\":\"FILES_JOOMLA_XML_DESCRIPTION\",\"group\":\"\"}','','','',0,'0000-00-00 00:00:00',0,0),
+ (700,'files_joomla','file','joomla','',0,1,1,1,'{\"legacy\":false,\"name\":\"files_joomla\",\"type\":\"file\",\"creationDate\":\"April 2014\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2005 - 2014 Open Source Matters. All rights reserved\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"2.5.20\",\"description\":\"FILES_JOOMLA_XML_DESCRIPTION\",\"group\":\"\"}','','','',0,'0000-00-00 00:00:00',0,0),
  (800,'PKG_JOOMLA','package','pkg_joomla','',0,1,1,1,'{\"legacy\":false,\"name\":\"PKG_JOOMLA\",\"type\":\"package\",\"creationDate\":\"2006\",\"author\":\"Joomla! Project\",\"copyright\":\"Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"http:\\/\\/www.joomla.org\",\"version\":\"2.5.0\",\"description\":\"PKG_JOOMLA_XML_DESCRIPTION\",\"group\":\"\"}','','','',0,'0000-00-00 00:00:00',0,0),
  (10000,'PortugusBrasil','language','pt-BR','',0,1,0,0,'{\"legacy\":false,\"name\":\"Portugu\\u00eas(Brasil)\",\"type\":\"language\",\"creationDate\":\"2013-01-29\",\"author\":\"Joomla Brasil\",\"copyright\":\"Copyright 2005 - 2013 Open Source Matters. Todos os Direitos Reservados. Copyright Translation 2005 - 2013 Joomla Brasil. Todos os Direitos Reservados.\",\"authorEmail\":\"traducao@joomla.com.br\",\"authorUrl\":\"www.joomla.com.br\",\"version\":\"2.5.9.1\",\"description\":\"\\n\\t\\t\\t\\tArquivos de Idioma em Portugu\\u00eas Brasileiro para o CMS Joomla! 2.5<br\\/>\\n\\t\\t\\t\\tCopyright 2005 - 2013 Open Source Matters. Todos os Direitos Reservados. Copyright Translation 2005 - 2013 Joomla Brasil. Todos os Direitos Reservados.<br\\/>\\n\\t\\t\\t\\tDe acordo com termo de licenciamento de <a href=\\\"http:\\/\\/www.opensourcematters.org\\\" target=\\\"_blank\\\">OpenSourceMatters<\\/a> e <a href=\\\"http:\\/\\/www.joomla.org\\\" target=\\\"_blank\\\">Joomla!<\\/a> todos os arquivos de idioma devem ser licenciados sob a <a href=\\\"http:\\/\\/www.gnu.org\\/licenses\\/gpl-2.0.html\\\" target=\\\"_blank\\\"> licen\\u00e7a GNU\\/GPL (v.2.0)<\\/a>. Esta tradu\\u00e7\\u00e3o est\\u00e1 licenciada sob esta licen\\u00e7a. Se voc\\u00ea encontrar algum erro de digita\\u00e7\\u00e3o, tradu\\u00e7\\u00f5es incorretas ou se deseja sugerir melhorias, entre em contato com o <a href=\\\"mailto:traducao@joomla.com.br\\\">coordenador<\\/a> da tradu\\u00e7\\u00e3o.\\n\\t\\t\\t\\t\\n\\t\",\"group\":\"\"}','{}','','',0,'0000-00-00 00:00:00',0,0),
  (10001,'PortugusBrasil','language','pt-BR','',1,1,0,0,'{\"legacy\":false,\"name\":\"Portugu\\u00eas(Brasil)\",\"type\":\"language\",\"creationDate\":\"2013-01-29\",\"author\":\"Joomla Brasil\",\"copyright\":\"Copyright 2005 - 2013 Open Source Matters. Todos os Direitos Reservados. Copyright Translation 2005 - 2013 Joomla Brasil. Todos os Direitos Reservados.\",\"authorEmail\":\"traducao@joomla.com.br\",\"authorUrl\":\"www.joomla.com.br\",\"version\":\"2.5.9.1\",\"description\":\"\\n\\t\\t\\t\\tArquivos de Idioma em Portugu\\u00eas Brasileiro para o CMS Joomla! 2.5<br\\/>\\n\\t\\t\\t\\tCopyright 2005 - 2013 Open Source Matters. Todos os Direitos Reservados. Copyright Translation 2005 - 2013 Joomla Brasil. Todos os Direitos Reservados.<br\\/>\\n\\t\\t\\t\\tDe acordo com termo de licenciamento de <a href=\\\"http:\\/\\/www.opensourcematters.org\\\" target=\\\"_blank\\\">OpenSourceMatters<\\/a> e <a href=\\\"http:\\/\\/www.joomla.org\\\" target=\\\"_blank\\\">Joomla!<\\/a> todos os arquivos de idioma devem ser licenciados sob a <a href=\\\"http:\\/\\/www.gnu.org\\/licenses\\/gpl-2.0.html\\\" target=\\\"_blank\\\"> licen\\u00e7a GNU\\/GPL (v.2.0)<\\/a>. Esta tradu\\u00e7\\u00e3o est\\u00e1 licenciada sob esta licen\\u00e7a. Se voc\\u00ea encontrar algum erro de digita\\u00e7\\u00e3o, tradu\\u00e7\\u00f5es incorretas ou se deseja sugerir melhorias, entre em contato com o <a href=\\\"mailto:traducao@joomla.com.br\\\">coordenador<\\/a> da tradu\\u00e7\\u00e3o.\\n\\t\\t\\t\\t\\n\\t\",\"group\":\"\"}','{}','','',0,'0000-00-00 00:00:00',0,0),
@@ -7613,7 +7613,7 @@ CREATE TABLE  `portal_modelo`.`pmgov2013_schemas` (
 
 /*!40000 ALTER TABLE `pmgov2013_schemas` DISABLE KEYS */;
 LOCK TABLES `pmgov2013_schemas` WRITE;
-INSERT INTO `portal_modelo`.`pmgov2013_schemas` VALUES  (700,'2.5.19'),
+INSERT INTO `portal_modelo`.`pmgov2013_schemas` VALUES  (700,'2.5.20'),
  (10019,'2.1.3'),
  (10022,'3.4.8');
 UNLOCK TABLES;
@@ -7646,7 +7646,7 @@ CREATE TABLE  `portal_modelo`.`pmgov2013_session` (
 
 /*!40000 ALTER TABLE `pmgov2013_session` DISABLE KEYS */;
 LOCK TABLES `pmgov2013_session` WRITE;
-INSERT INTO `portal_modelo`.`pmgov2013_session` VALUES  ('9b3d79cb6a951769f7cc3c716ed685a5',1,1,'1397317393','__default|a:8:{s:15:\"session.counter\";i:1;s:19:\"session.timer.start\";i:1397317393;s:18:\"session.timer.last\";i:1397317393;s:17:\"session.timer.now\";i:1397317393;s:22:\"session.client.browser\";s:120:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36\";s:8:\"registry\";O:9:\"JRegistry\":1:{s:7:\"\0*\0data\";O:8:\"stdClass\":0:{}}s:4:\"user\";O:5:\"JUser\":25:{s:9:\"\0*\0isRoot\";N;s:2:\"id\";i:0;s:4:\"name\";N;s:8:\"username\";N;s:5:\"email\";N;s:8:\"password\";N;s:14:\"password_clear\";s:0:\"\";s:8:\"usertype\";N;s:5:\"block\";N;s:9:\"sendEmail\";i:0;s:12:\"registerDate\";N;s:13:\"lastvisitDate\";N;s:10:\"activation\";N;s:6:\"params\";N;s:6:\"groups\";a:0:{}s:5:\"guest\";i:1;s:13:\"lastResetTime\";N;s:10:\"resetCount\";N;s:10:\"\0*\0_params\";O:9:\"JRegistry\":1:{s:7:\"\0*\0data\";O:8:\"stdClass\":0:{}}s:14:\"\0*\0_authGroups\";N;s:14:\"\0*\0_authLevels\";a:2:{i:0;i:1;i:1;i:1;}s:15:\"\0*\0_authActions\";N;s:12:\"\0*\0_errorMsg\";N;s:10:\"\0*\0_errors\";a:0:{}s:3:\"aid\";i:0;}s:13:\"session.token\";s:32:\"7fbd8e7ed9ff1026a92bd91a69c53419\";}',0,'','');
+INSERT INTO `portal_modelo`.`pmgov2013_session` VALUES  ('bb5c03cb380c39009c7090bac2d183ad',1,0,'1399754989','__default|a:8:{s:22:\"session.client.browser\";s:81:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:28.0) Gecko/20100101 Firefox/28.0\";s:15:\"session.counter\";i:12;s:8:\"registry\";O:9:\"JRegistry\":1:{s:7:\"\0*\0data\";O:8:\"stdClass\":3:{s:11:\"application\";O:8:\"stdClass\":1:{s:4:\"lang\";s:0:\"\";}s:18:\"com_youtubegallery\";O:8:\"stdClass\":1:{s:9:\"linkslist\";O:8:\"stdClass\":1:{s:8:\"ordercol\";N;}}s:16:\"com_joomlaupdate\";O:8:\"stdClass\":3:{s:4:\"file\";N;s:8:\"password\";s:32:\"C02Rw9AYBsX5rUq3IyIg22tfoWkU5wxz\";s:8:\"filesize\";i:3583168;}}}s:4:\"user\";O:5:\"JUser\":25:{s:9:\"\0*\0isRoot\";b:1;s:2:\"id\";s:3:\"576\";s:4:\"name\";s:10:\"Super User\";s:8:\"username\";s:5:\"admin\";s:5:\"email\";s:21:\"joomlagovbr@gmail.com\";s:8:\"password\";s:34:\"$P$DGmYJZMgXWTz3YfU6KyAKxQN0D7So..\";s:14:\"password_clear\";s:0:\"\";s:8:\"usertype\";s:10:\"deprecated\";s:5:\"block\";s:1:\"0\";s:9:\"sendEmail\";s:1:\"1\";s:12:\"registerDate\";s:19:\"2013-10-14 14:26:05\";s:13:\"lastvisitDate\";s:19:\"2014-05-10 20:01:01\";s:10:\"activation\";s:1:\"0\";s:6:\"params\";s:95:\"{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"jce\",\"helpsite\":\"\",\"timezone\":\"\"}\";s:6:\"groups\";a:1:{i:8;s:1:\"8\";}s:5:\"guest\";i:0;s:13:\"lastResetTime\";s:19:\"0000-00-00 00:00:00\";s:10:\"resetCount\";s:1:\"0\";s:10:\"\0*\0_params\";O:9:\"JRegistry\":1:{s:7:\"\0*\0data\";O:8:\"stdClass\":6:{s:11:\"admin_style\";s:0:\"\";s:14:\"admin_language\";s:0:\"\";s:8:\"language\";s:0:\"\";s:6:\"editor\";s:3:\"jce\";s:8:\"helpsite\";s:0:\"\";s:8:\"timezone\";s:0:\"\";}}s:14:\"\0*\0_authGroups\";a:2:{i:0;i:1;i:1;i:8;}s:14:\"\0*\0_authLevels\";a:4:{i:0;i:1;i:1;i:1;i:2;i:2;i:3;i:3;}s:15:\"\0*\0_authActions\";N;s:12:\"\0*\0_errorMsg\";N;s:10:\"\0*\0_errors\";a:0:{}s:3:\"aid\";i:0;}s:13:\"session.token\";s:32:\"9a52210f2567789aa695181cb1cc7afc\";s:19:\"session.timer.start\";i:1399754680;s:18:\"session.timer.last\";i:1399754988;s:17:\"session.timer.now\";i:1399754988;}',576,'admin','');
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `pmgov2013_session` ENABLE KEYS */;
 
@@ -7729,7 +7729,7 @@ CREATE TABLE  `portal_modelo`.`pmgov2013_update_sites` (
 
 /*!40000 ALTER TABLE `pmgov2013_update_sites` DISABLE KEYS */;
 LOCK TABLES `pmgov2013_update_sites` WRITE;
-INSERT INTO `portal_modelo`.`pmgov2013_update_sites` VALUES  (1,'Joomla Core','collection','http://update.joomla.org/core/list.xml',1,1397317311),
+INSERT INTO `portal_modelo`.`pmgov2013_update_sites` VALUES  (1,'Joomla Core','collection','http://update.joomla.org/core/list.xml',1,1399751934),
  (2,'Joomla Extension Directory','collection','http://update.joomla.org/jed/list.xml',0,1384534159),
  (3,'Accredited Joomla! Translations','collection','http://update.joomla.org/language/translationlist.xml',0,1384534159),
  (5,'Blackdale','extension','http://updates.blackdale.com/update/modblank250/modblank250.xml',0,1384534159),
@@ -7788,7 +7788,7 @@ CREATE TABLE  `portal_modelo`.`pmgov2013_updates` (
   `detailsurl` text NOT NULL,
   `infourl` text NOT NULL,
   PRIMARY KEY (`update_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=208 DEFAULT CHARSET=utf8 COMMENT='Available Updates';
+) ENGINE=InnoDB AUTO_INCREMENT=209 DEFAULT CHARSET=utf8 COMMENT='Available Updates';
 
 --
 -- Dumping data for table `portal_modelo`.`pmgov2013_updates`
@@ -8156,7 +8156,7 @@ CREATE TABLE  `portal_modelo`.`pmgov2013_users` (
 
 /*!40000 ALTER TABLE `pmgov2013_users` DISABLE KEYS */;
 LOCK TABLES `pmgov2013_users` WRITE;
-INSERT INTO `portal_modelo`.`pmgov2013_users` VALUES  (576,'Super User','admin','joomlagovbr@gmail.com','$P$DGmYJZMgXWTz3YfU6KyAKxQN0D7So..','deprecated',0,1,'2013-10-14 14:26:05','2014-04-12 15:43:13','0','{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"jce\",\"helpsite\":\"\",\"timezone\":\"\"}','0000-00-00 00:00:00',0);
+INSERT INTO `portal_modelo`.`pmgov2013_users` VALUES  (576,'Super User','admin','joomlagovbr@gmail.com','$P$DGmYJZMgXWTz3YfU6KyAKxQN0D7So..','deprecated',0,1,'2013-10-14 14:26:05','2014-05-10 20:46:46','0','{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"jce\",\"helpsite\":\"\",\"timezone\":\"\"}','0000-00-00 00:00:00',0);
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `pmgov2013_users` ENABLE KEYS */;
 
