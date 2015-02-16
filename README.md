@@ -1,21 +1,10 @@
 Portal padrão em CMS Joomla 2.5
 ================
 
-Acompanhe as atualizações do projeto
+VERSÃO 2.5 DESCONTINUADA
 ---------------------
-Participe do grupo do google chamado [Joomla! e-Gov](https://groups.google.com/forum/?hl=pt-BR#!forum/joomla-e-gov-br) para se manter informado sobre o Portal Padrão em CMS Joomla. As atualizações não possuem data programada e ocorrem de acordo com a disponibilidade dos voluntários participantes.
-
-
-ATENÇÃO
----------------------
-Este projeto visa ser um *quickstart* para iniciar projetos próprios de portais padrão em CMS Joomla, e atende as principais especificações e módulos recomendados pela Presidência da República, mas não esgota todos os módulos e recomendações citadas nos manuais.
-
-Os voluntários deste grupo não se responsabilizam pela incorreta utilização deste pacote, bem como pela incorreta configuração do servidor de produção, no que se refere
-aos quesitos segurança e performance.
-
-Recomenda-se a utilização de ambiente LAMP (Linux, Apache, MySQL, PHP), configurado para ambientes de produção de governo, o que implica configurações severas de permissões de pasta, restrições de acesso ao diretório /administrator, realização de BACKUPS, dentre outras boas práticas.
-
-ESTE PROJETO É RECOMENDADO PARA PROFISSIONAIS COM EXPERIÊNCIA NA UTILIZAÇÃO DO CMS JOOMLA.
+Com o fim do suporte oficial à versão 2.5, pedimos que sua versão do Portal Padrão em CMS Joomla 2.5 seja atualizada para a sua versão mais recente.
+Demais avisos e informações podem ser encontrados no repositório da versão 3.x, ou ainda nas informações das releases.
 
 
 Configuração inicial
